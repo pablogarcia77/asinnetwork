@@ -1,0 +1,110 @@
+<div class="row">
+  <div class="col s1">
+    <h4>Nro.</h4>
+  </div>
+  <div class="col s3">
+    <h4>Portafolio</h4>
+  </div>
+  <div class="col s5">
+    <h4>Semana</h4>
+  </div>
+  <div class="col s3">
+    <h4>Fecha Inicio</h4>
+  </div>
+</div>
+<!-- <div class="row" *ngFor="let numero of numeros; index as i"> -->
+  <div class="row">
+    <div class="col s1">1</div>
+    <div class="col s3">
+      <mat-form-field appearance="fill">
+        <mat-label>Portafolio</mat-label>
+        <mat-select [(ngModel)]="selectedValue1" name="portafolio">
+          <mat-option *ngFor="let portafolio of portafolios" [value]="portafolio.id">
+            {{portafolio.tipo.toUpperCase()}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col s5">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="semana1">
+        <mat-radio-button value="25">Semana 25</mat-radio-button>
+        <mat-radio-button value="50">Semana 50</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col s3">
+      <mat-form-field appearance="fill">
+        <mat-label>Elija Fecha</mat-label>
+        <input matInput [matDatepicker]="picker1" [(ngModel)]="f1">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col s1">2</div>
+    <div class="col s3">
+      <mat-form-field appearance="fill">
+        <mat-label>Portafolio</mat-label>
+        <mat-select [(ngModel)]="selectedValue2" name="portafolio">
+          <mat-option *ngFor="let portafolio of portafolios" [value]="portafolio.id">
+            {{portafolio.tipo.toUpperCase()}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col s5">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="semana2">
+        <mat-radio-button value="25">Semana 25</mat-radio-button>
+        <mat-radio-button value="50">Semana 50</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col s3">
+      <mat-form-field appearance="fill">
+        <mat-label>Elija Fecha</mat-label>
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="f2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col s1">3</div>
+    <div class="col s3">
+      <mat-form-field appearance="fill">
+        <mat-label>Portafolio</mat-label>
+        <mat-select [(ngModel)]="selectedValue3" name="portafolio">
+          <mat-option *ngFor="let portafolio of portafolios" [value]="portafolio.id">
+            {{portafolio.tipo.toUpperCase()}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col s5">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="semana3">
+        <mat-radio-button value="25">Semana 25</mat-radio-button>
+        <mat-radio-button value="50">Semana 50</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col s3">
+      <mat-form-field appearance="fill">
+        <mat-label>Elija Fecha</mat-label>
+        <input matInput [matDatepicker]="picker3" [(ngModel)]="f3">
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row" *ngIf="actualizado">
+    <div>
+      <p class="green-text">Portafolios actualizados correctamente.</p>
+    </div>
+  </div>
+  <div class="row">
+    <button type="button" class="col s12 waves-effect waves-light btn red darken-4" (click)="actualizarPortafolios()">Actualizar Portafolios</button>
+  </div>
+<!-- </div> -->

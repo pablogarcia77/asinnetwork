@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/materialize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>Asin Network Argentina</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper grey darken-4">
+                <div class="row">
+                    <div class="col s2">
+                        <a href="#" class="brand-logo">
+                            <img class="responsive-img" src="images/logo.png" alt="AsinNetwork" width="130px">
+                        </a>
+                    </div>
+                    <div class="col s10">
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                            <li><a href="#">Inicio</a></li>
+                            <li><a href="#empresa">La Empresa</a></li>
+                            <li><a href="#asin">Asin Network</a></li>
+                            <li><a href="#login" class="modal-trigger">Ingreso</a></li>
+                            <li><a href="#registro" class="waves-effect waves-light btn red darken-4">Registro</a></li>
+                            <li><a href="#contacto">Contacto</a></li>
+                            <li><a href="#socialMedia">Redes</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="parallax-container">
+        <div class="parallax"><img src="images/1.jpg"></div>
+    </div>
+    <section id="empresa" class="section">
+        <div class="row container">
+            <h2>Asin Network Argentina</h2>
+            <h4>ASIN NETWORK es una Red de socios argentinos, con el único propósito de ayudar a las personas a desarrollar negocios, mejorar sus estados financieros, su calidad de vida y acompañar en el crecimiento constante de la comunidad.</h4>
+            <h4>Te ayudaremos a adquirir y potenciar tus habilidades financieras mediante estrategias de negocios, para que dejes de trabajar por el dinero, y el dinero trabaje por ti.</h4>
+            <h4>Te ayudaremos a desarrollar tu propio negocio de mercadeo y te acompañaremos en cada uno de tus pasos en el camino al crecimiento económico, ademas de brindarte el reconocimiento merecido, por cada uno de tus logros.</h4>
+        </div>
+    </section>
+    <section id="asin" class="parallax-container  valign-wrapper">
+        <div class="parallax"><img src="images/2.jpg"></div>
+        <div class="row container">
+            <h4>ASIN NETWORK es un Equipo de profesionales especializados en las áreas de Negocios Tradicionales y No Tradicionales, Marketing Digital, Mercadeo en Red y Desarrollo Personal.</h4>
+            <h4>Nuestro Objetivo es simplemente ayudarte a alcanzar tus metas mediante el trabajo conjunto, la capacitación y la motivación.</h4>
+        </div>
+    </section>
+    <section id="registro" class="section">
+        <div class="container">
+            <h2>Se parte de Asin Network Argentina</h2>
+            <div class="row">
+                <form id="formRegistro" action="registro.php" class="col s12" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="input-field col s12 m6">
+                            <input type="text" name="usuario" id="usuario" class="validate white-text"/>
+                            <label for="usuario">Usuario</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input type="password" name="password" id="password" class="validate white-text"/>
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input type="text" name="nombre" id="nombre" class="validate white-text"/>
+                            <label for="nombre">Nombre</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input type="text" name="apellido" id="apellido" class="validate white-text"/>
+                            <label for="apellido">Apellido</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input type="text" name="documento" id="documento" class="validate white-text"/>
+                            <label for="documento">Documento</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input type="email" name="email" id="email" class="validate white-text"/>
+                            <label for="email">E-mail</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input type="text" name="domicilio" id="domicilio" class="validate white-text"/>
+                            <label for="domicilio">Domicilio (Calle)</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input type="text" name="barrio" id="barrio" class="validate white-text"/>
+                            <label for="barrio">Barrio</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input type="text" name="localidad" id="localidad" class="validate white-text"/>
+                            <label for="localidad">Localidad</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input type="text" name="provincia" id="provincia" class="validate white-text"/>
+                            <label for="provincia">Provincia</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input type="text" name="cp" id="cp" class="validate white-text"/>
+                            <label for="cp">Código Postal</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input type="text" name="telefono" id="telefono" class="validate white-text"/>
+                            <label for="telefono">Número de Teléfono</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input type="text" name="patrocinador" id="patrocinador" class="validate white-text"/>
+                            <label for="patrocinador">Patrocinador</label>
+                            <!-- <select name="patrocinador" id="patrocinador" class="white-text">
+                                <option value="" disabled selected>Seleccione</option>
+                                <option value="1">Patrocinador 1</option>
+                                <option value="2">Patrocinador 2</option>
+                                <option value="3">Patrocinador 3</option>
+                                <option value="4">Patrocinador 4</option>
+                                <option value="5">Patrocinador 5</option>
+                            </select>
+                            <label for="patrocinador">Nombre del Patrocinador</label> -->
+                        </div>
+                        <div class="file-field col s12 m6">
+                            <div class="btn red darken-4">
+                                <span>Foto del Frente del DNI</span>
+                                <div id="nya" name="nya"></div>
+                                <input id="frenteDNI" onchange="subirFrente()" type="file" name="frenteDNI" accept="image/*"/>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input type="text" class="file-path validate">
+                            </div>
+                        </div>
+                        <div class="file-field col s12 m6">
+                            <div class="btn red darken-4">
+                                <span>Foto del Dorso del DNI</span>
+                                <input id="dorsoDNI" onchange="subirDorso()" type="file" name="dorsoDNI" accept="image/*"/>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input type="text" class="file-path validate">
+                            </div>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <select name="portafolios" id="portafolios" multiple class="white-text">
+                                <option value="" disabled>Seleccione</option>
+                                <option value="free">Free</option>
+                                <option value="base">Base</option>
+                                <option value="medio">Medio</option>
+                                <option value="plus">Plus</option>
+                                <option value="mega">Mega</option>
+                                <option value="extra">Extra</option>
+                                <option value="full">Full</option>
+                            </select>
+                            <label for="portafolios">Portafolio/s adquirido/s</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <select name="posicion" id="posicion" class="white-text">
+                                <option value="" disabled selected>Seleccione</option>
+                                <option value="izquierda">Izquierda</option>
+                                <option value="derecha">Derecha</option>
+                            </select>
+                            <label for="posicion">Posición de la nueva cuenta (izquierda/derecha)</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input type="text" name="banco" id="banco" class="validate white-text"/>
+                            <label for="banco">Banco</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <input type="text" name="numeroCuenta" id="numeroCuenta" class="validate white-text"/>
+                            <label for="numeroCuenta">Número de Cuenta Bancaria</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <button type="submit" class="waves-effect waves-light btn red darken-4">Registrarme</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section id="contacto" class="parallax-container valign-wrapper">
+        <div class="parallax"><img src="images/3.jpg"></div>
+        <div class="row container">
+            <h4 class="center-align">Comunícate con nosotros para recibir mayor información.</h4>
+            <h4>Envíanos un mensaje y nos pondremos en contacto contigo en la brevedad.</h4>
+            <div class="row">
+                <form action="" class="col s12">
+                    <div class="input-field col s12 m6">
+                        <input type="text" name="contactNombre" id="contactNombre" class="validate white-text"/>
+                        <label for="contactNombre">Nombre</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <input type="text" name="contactEmail" id="contactEmail" class="validate white-text"/>
+                        <label for="contactEmail">Email</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="contactMensaje" name="contactMensaje" class="materialize-textarea white-text"></textarea>
+                        <label for="contactMensaje">Mensaje</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <button type="submit" class="waves-effect waves-light btn red darken-4">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer id="socialMedia"  class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <div class="row">
+                        <h5>¡Seguinos en nuestras Redes Sociales!</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col s1"><a href=""><i class="fab fa-facebook fa-2x"></i></a></div>
+                        <div class="col s1"><a href=""><i class="fab fa-instagram fa-2x"></i></a></div>
+                        <div class="col s1"><a href=""><i class="fab fa-twitter fa-2x"></i></a></div>
+                        <div class="col s1"><a href=""><i class="fab fa-youtube fa-2x"></i></a></div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5>Contacto</h5>
+                    <ul>
+                        <li><i class="fab fa-whatsapp"></i>&nbsp;<span>+5493875376267</span></li>
+                        <li><i class="fas fa-phone-alt"></i>&nbsp;<span>3888428721</span></li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">©2021</div>
+        </div>
+    </footer>
+    <div id="login" class="modal">
+        <div class="modal-content">
+            <h4 class="center-align">Acceso</h4>
+            <form action="">
+                <div class="container">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-user prefix"></i>
+                            <input type="text" class="validate" id="usuarioLog" name="usuario">
+                            <label for="usuario">Usuario</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-key prefix"></i>
+                            <input type="password" name="password" id="passwordLog" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="col s12 waves-effect waves-light btn red darken-4">Ingresar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="modalRegistro" class="modal">
+        <div class="modal-content">
+            <h4 class="center-align">Se registro correctamente</h4>
+            <div id="error"></div>
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

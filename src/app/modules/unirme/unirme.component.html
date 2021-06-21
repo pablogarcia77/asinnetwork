@@ -1,0 +1,67 @@
+<div class="container pt-50">
+    <div class="row">
+        <h1 class="col s12">Unirme a una Red</h1>
+    </div>
+    <form (submit)="nuevo()">
+        <div class="row">
+            <div class="col s6">
+                <mat-form-field>
+                    <mat-icon matPrefix class="icono">
+                        <fa-icon [icon]="faUser" size="2x"></fa-icon>
+                    </mat-icon>
+                    <mat-label class="blanco">Patrocinador</mat-label>
+                    <input type="text"
+                        placeholder="Pick one"
+                        aria-label="Number"
+                        matInput
+                        [formControl]="patrocinador"
+                        [matAutocomplete]="auto"
+                        required>
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="getOptionText">
+                        <mat-option *ngFor="let usuario of filteredOptions | async" [value]="usuario">
+                            {{usuario.username}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <span *ngIf="!patrocinador.value" class="red-text darken-4">Tienes que elegir un patrocinador</span>
+            </div>
+            <div class="col s6">
+                <mat-form-field>
+                    <mat-label class="blanco">Portafolio/s adquirido/s</mat-label>
+                    <mat-select  multiple [(value)]="portafoliosSeleccionados">
+                        <mat-option *ngFor="let portafolio of portafolioList" [value]="portafolio.id">
+                            {{portafolio.tipo.toUpperCase()}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <span *ngIf="portafoliosSeleccionados.length > 3" class="red-text darken-4">No puedes tener más de 3 portafolios</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <mat-form-field >
+                    <mat-label class="blanco">Posición de la nueva cuenta (izquierda/derecha)</mat-label>
+                    <mat-select [(value)]="posicionNueva" required>
+                        <mat-option *ngFor="let posicion of posiciones" [value]="posicion">
+                            {{posicion}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row col s12">
+            <button type="submit" class="col s12 waves-effect waves-light btn red darken-4" [disabled]="portafoliosSeleccionados.length > 3 || !patrocinador.value || !estado" (click)="openDialogTemplate(myDialog)">Unirme</button>
+        </div>
+    </form>
+    <div class="row mb-0">
+
+    </div>
+</div>
+<ng-template #myDialog>
+    <mat-dialog-content>
+      <p>Te uniste a la red</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button matDialogClose class="col s12 waves-effect waves-light btn red darken-4">Aceptar</button>
+    </mat-dialog-actions>
+</ng-template>

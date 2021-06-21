@@ -1,0 +1,22 @@
+.pt-50{
+    padding-top: 50px;
+}
+.mb-0{
+    margin-bottom: 0;
+}
+.arbol{
+    z-index: 100;
+    color: white !important;
+    transition: 1s 4s bottom, 4s left cubic-bezier(1,0,1,1);
+    background-color: rebeccapurple;
+}
+.arbol:hover{
+    transition: 1s bottom, 4s 1s left cubic-bezier(0,1,1,1);
+}
+.nodo{
+    fill: #fff;
+}
+.chart{
+
+    transform: scale(0.8);
+}

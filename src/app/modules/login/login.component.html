@@ -1,0 +1,37 @@
+<h1 class="center-align">Acceso</h1>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <div class="col s1">
+                <fa-icon [icon]="faUser" size="2x"></fa-icon>
+            </div>
+            <div class="col s11">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Usuario</mat-label>
+                    <input matInput [(ngModel)]="usuario.username">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="col s1">
+                <fa-icon [icon]="faKey" size="2x"></fa-icon>
+            </div>
+            <div class="col s11">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" [(ngModel)]="usuario.password" (keydown.enter)="login()">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="errores">
+        <span class="red-text" *ngIf="error">
+            ¡Error! Usuario o contraseña incorrectos.
+        </span>
+    </div>
+    <div class="row">
+        <button type="submit" class="col s12 waves-effect waves-light btn red darken-4" (click)="login()">Ingresar</button>
+    </div>
+</div>

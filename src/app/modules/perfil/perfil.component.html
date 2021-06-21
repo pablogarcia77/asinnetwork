@@ -1,0 +1,132 @@
+<div class="container pt-50">
+    <div class="row">
+        <h1>Mi Perfil</h1>
+    </div>
+    <!-- <div class="row">
+        <h4 class="right">Tipo de Cuenta: <span class="new badge red darken-4" data-badge-caption="Inversor"></span></h4>
+    </div> -->
+    <div class="row">
+        <div class="input-field col s6">
+            <mat-form-field>
+                <mat-icon matPrefix class="icono">
+                    <fa-icon [icon]="faUser" size="2x"></fa-icon>
+                </mat-icon>
+                <mat-label class="blanco">Usuario</mat-label>
+                <input matInput [(ngModel)]="usuario.username" disabled>
+            </mat-form-field>
+        </div>
+        <div class="input-field col s6">
+            <mat-form-field>
+                <mat-icon matPrefix class="icono">
+                    <fa-icon [icon]="faKey" size="2x"></fa-icon>
+                </mat-icon>
+                <mat-label class="blanco">Password</mat-label>
+                <input matInput type="password" [(ngModel)]="usuario.password" (click)="borrar()" (blur)="volver()">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <mat-form-field>
+                <mat-icon matPrefix class="icono">
+                    <fa-icon [icon]="faUser" size="2x"></fa-icon>
+                </mat-icon>
+                <mat-label class="blanco">Apellido</mat-label>
+                <input matInput [(ngModel)]="usuario.apellido">
+            </mat-form-field>
+        </div>
+        <div class="input-field col s6">
+            <mat-form-field>
+                <mat-icon matPrefix class="icono">
+                    <fa-icon [icon]="faUser" size="2x"></fa-icon>
+                </mat-icon>
+                <mat-label class="blanco">Nombre</mat-label>
+                <input matInput [(ngModel)]="usuario.nombre">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <mat-form-field>
+                <mat-icon matPrefix class="icono">
+                    <fa-icon [icon]="faAddressCard" size="2x"></fa-icon>
+                </mat-icon>
+                <mat-label class="blanco">Documento</mat-label>
+                <input matInput [(ngModel)]="usuario.documento" disabled>
+            </mat-form-field>
+        </div>
+        <div class="input-field col s6">
+            <mat-form-field>
+                <mat-icon matPrefix class="icono">
+                    <fa-icon [icon]="faEnvelope" size="2x"></fa-icon>
+                </mat-icon>
+                <mat-label class="blanco">Email</mat-label>
+                <input matInput type="email" [(ngModel)]="usuario.email" disabled>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <mat-form-field>
+                <mat-icon matPrefix class="icono">
+                    <fa-icon [icon]="faHome" size="2x"></fa-icon>
+                </mat-icon>
+                <mat-label class="blanco">Domicilio Legal</mat-label>
+                <input matInput [(ngModel)]="usuario.domicilio">
+            </mat-form-field>
+        </div>
+        <div class="input-field col s6">
+            <mat-form-field>
+                <mat-icon matPrefix class="icono">
+                    <fa-icon [icon]="faPhone" size="2x"></fa-icon>
+                </mat-icon>
+                <mat-label class="blanco">Teléfono</mat-label>
+                <input matInput [(ngModel)]="usuario.telefono">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <mat-form-field>
+                <mat-icon matPrefix class="icono">
+                    <fa-icon [icon]="faUniversity" size="2x"></fa-icon>
+                </mat-icon>
+                <mat-label class="blanco">Banco</mat-label>
+                <input matInput [(ngModel)]="usuario.banco">
+            </mat-form-field>
+        </div>
+        <div class="input-field col s6">
+            <mat-form-field>
+                <mat-icon matPrefix class="icono">
+                    <fa-icon [icon]="faMoney" size="2x"></fa-icon>
+                </mat-icon>
+                <mat-label class="blanco">Número de Cuenta Bancaria</mat-label>
+                <input matInput [(ngModel)]="usuario.numero_cuenta">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" class="col s12 waves-effect waves-light btn red darken-4" (click)="openDialogTemplate(myDialog)">Actualizar Datos</button>
+    </div>
+    <div class="row mb-0">
+    </div>
+</div>
+
+<ng-template #myDialog>
+    <mat-dialog-content>
+      <div class="row">
+            <mat-form-field>
+                <mat-icon matPrefix class="icono">
+                    <fa-icon [icon]="faKey" size="2x"></fa-icon>
+                </mat-icon>
+                <mat-label>Confirme Password</mat-label>
+                <input matInput type="password" [(ngModel)]="usuarioActualizado.password">
+            </mat-form-field>
+            <p class="red-text" *ngIf="error">¡Contraseña Incorrecta!</p>
+            <p class="green-text" *ngIf="exito">Datos actualizados correctamente, te redireccionaremos para que vuelvas a ingresar al sistema.</p>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button class="col s12 waves-effect waves-light btn red darken-4" (click)="actualizarPerfil()">Aceptar</button>
+    </mat-dialog-actions>
+</ng-template>

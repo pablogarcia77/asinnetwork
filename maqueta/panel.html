@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/materialize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>Asin Network Argentina</title>
+</head>
+<body>
+    <header class="admin">
+        <nav class="navbar-fixed">
+            <div class="nav-wrapper grey darken-4">
+                <div class="row">
+                    <div class="col s2">
+                        <a href="#" class="brand-logo">
+                            <img class="responsive-img" src="images/logo.png" alt="AsinNetwork" width="130px">
+                        </a>
+                    </div>
+                    <div class="col s10">
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                            <li><a class="dropdown-trigger" href="3" data-target="dropdown1"><i class="fas fa-bell"></i></a></li>
+                            <ul id="dropdown1" class="dropdown-content">
+                                <li><a href="#!">one</a></li>
+                                <li><a href="#!">two</a></li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <ul id="slide-out" class="sidenav sidenav-fixed grey darken-4">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img class="responsive-img" src="images/fondo.jpg" alt="AsinNetwork">
+                    </div>
+                    <a href="#user"><img class="circle" src="https://img.17qq.com/images/hmmlggomopv.jpeg"></a>
+                    <a href="#name"><span class="white-text name">Samuel Jaddéss</span></a>
+                    <a href="#email"><span class="white-text email">samuel@asinnetwork.net</span></a>
+                </div>
+            </li>
+            <li><a href="panel.html"><i class="fas fa-id-card"></i>Mi Perfil</a></li>
+            <li><a href="red.html"><i class="fas fa-project-diagram"></i>Mi Red</a></li>
+            <li><div class="divider grey darken-3"></div></li>
+            <li><a href="portafolios.html"><i class="fas fa-briefcase"></i>Portafolios</a></li>
+            <li><a href="socios.html"><i class="fas fa-coffee"></i>Socios Inversores</a></li>
+            <li><a href="desarrolladores.html"><i class="fas fa-address-book"></i>Desarrolladores</a></li>
+            <li><a href="sociosdes.html"><i class="fas fa-users"></i>Inversores y Desarrolladores</a></li>
+            <li><div class="divider grey darken-3"></div></li>
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i>Salir</a></li>
+        </ul>
+    </header>
+    <main class="admin">
+        <div class="container">
+            <div class="row">
+                <h3>Mi Perfil</h3>
+            </div>
+            <div class="row">
+                <h6 class="right">Tipo de Cuenta: <span class="new badge red darken-4" data-badge-caption="Inversor"></span></h6>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fas fa-user prefix"></i>
+                    <input type="text" name="nombre" id="nombre" class="validate">
+                    <label for="nombre">Nombre</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fas fa-user prefix"></i>
+                    <input type="text" name="apellido" id="apellido" class="validate">
+                    <label for="apellido">Apellido</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fas fa-user prefix"></i>
+                    <input type="text" class="validate" id="usuario" name="usuario" disabled value="userName">
+                    <label for="usuario">Usuario</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fas fa-key prefix"></i>
+                    <input type="password" name="password" id="password" class="validate">
+                    <label for="password">Nuevo Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fas fa-address-card prefix"></i>
+                    <input type="text" name="documento" id="documento" class="validate">
+                    <label for="documento">Documento</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fas fa-envelope prefix"></i>
+                    <input type="email" name="email" id="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fas fa-home prefix"></i>
+                    <input type="text" name="domicilio" id="domicilio" class="validate">
+                    <label for="domicilio">Domicilio Legal</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fas fa-phone prefix"></i>
+                    <input type="text" name="telefono" id="telefono" class="validate">
+                    <label for="telefono">Teléfono</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fas fa-university prefix"></i>
+                    <input type="text" name="banco" id="banco" class="validate">
+                    <label for="banco">Banco</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fas fa-money-check-alt prefix"></i>
+                    <input type="text" name="numeroCuenta" id="numeroCuenta" class="validate">
+                    <label for="numeroCuenta">Número de Cuenta Bancaria</label>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="col s12 waves-effect waves-light btn red darken-4">Actualizar Datos</button>
+            </div>
+        </div>
+    </main>
+    <footer class="section">
+        <div class="footer-copyright">
+            <div class="container">©2021</div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

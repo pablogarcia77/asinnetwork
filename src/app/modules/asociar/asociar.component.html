@@ -1,0 +1,60 @@
+<div class="container pt-50">
+    <div class="row">
+        <h1 class="col s12">Asociar a mi Red</h1>
+    </div>
+    <div class="row">
+        <button class="col s4 waves-effect waves-light btn red darken-4" (click)="nuevoUsuario()">Nuevo Usuario</button>
+    </div>
+    <!-- <div class="row">
+        <h2 class="col s12">Buscar Usuario</h2>
+    </div>
+    <form (submit)="asociar()">
+        <div class="row">
+            <div class="col s6">
+                <mat-form-field>
+                    <mat-icon matPrefix class="icono">
+                        <fa-icon [icon]="faUser" size="2x"></fa-icon>
+                    </mat-icon>
+                    <mat-label class="blanco">Asociar a</mat-label>
+                    <input type="text"
+                        placeholder="Socio"
+                        aria-label="Number"
+                        matInput
+                        [formControl]="patrocinado"
+                        [matAutocomplete]="auto"
+                        required>
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="getOptionText">
+                        <mat-option *ngFor="let usuario of filteredOptions | async" [value]="usuario">
+                            {{usuario.username}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <span *ngIf="!patrocinado.value" class="red-text darken-4">Tienes que elegir un usuario</span>
+            </div>
+            <div class="col s6">
+                <mat-form-field >
+                    <mat-label class="blanco">Posición de la nueva cuenta (izquierda/derecha)</mat-label>
+                    <mat-select [(value)]="posicionNueva" required>
+                        <mat-option *ngFor="let posicion of posiciones" [value]="posicion">
+                            {{posicion}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row col s12">
+            <button type="submit" class="col s12 waves-effect waves-light btn red darken-4" [disabled]="!patrocinado.value || !posicionNueva" (click)="openDialogTemplate(myDialog)">Asociar</button>
+        </div>
+    </form> -->
+    <div class="row mb-0">
+
+    </div>
+</div>
+<ng-template #myDialog>
+    <mat-dialog-content>
+      <p>Asociaste a un nuevo usuario a tu red.</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button matDialogClose class="col s12 waves-effect waves-light btn red darken-4">Aceptar</button>
+    </mat-dialog-actions>
+</ng-template>

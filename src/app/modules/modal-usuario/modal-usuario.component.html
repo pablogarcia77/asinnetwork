@@ -1,0 +1,35 @@
+<div class="row">
+    <h1 class="center-align">Asin Card</h1>
+</div>
+<div class="row">
+    <div class="col s2">
+        <img src="assets/images/logo.png" alt="Asin Logo" width="100" class="responsive-img">
+    </div>
+    <div class="col s4">
+        <h3><span>Username:</span> {{usuario.username}}</h3>
+        <h3><span>Apellido:</span> {{usuario.apellido}}</h3>
+        <h3><span>Nombre:</span> {{usuario.nombre}}</h3>
+        <h3><span>DNI:</span> {{usuario.documento}}</h3>
+        <h3><span>Posicion:</span> {{posicion}}</h3>
+        <h3><span>Teléfono:</span> {{usuario.telefono}}</h3>
+    </div>
+    <div class="col s6">
+        <h3>
+            <span>Portafolio/s: </span>
+            <!-- <span *ngFor="let portafolio of portafolios;index as i">{{portafolio.portafolio.tipo.toUpperCase()}}<span *ngIf="i < portafolios.length - 1">, </span></span> -->
+        </h3>
+        <div class="row mb-0">
+            <p class="col s2 mb-0">Tipo</p>
+            <p class="col s5 mb-0 right-align">Inicio</p>
+            <p class="col s4 mb-0 right-align">Vencimiento</p>
+        </div>
+        <div class="row" [ngClass]="{'mb-0': portafolios.length -1 != i}" *ngFor="let portafolio of portafolios;index as i">
+            <p class="col s2 mb-0">{{portafolio.portafolio.tipo.toUpperCase()}}</p>
+            <p class="col s5 mb-0 right-align">{{portafolio.fecha | date:'d/MM/yy'}}</p>
+            <p class="col s4 mb-0 right-align">{{portafolio.vencimiento | date:'d/MM/yy'}}</p>
+        </div>
+        <!-- <h3><span>Semanas:</span></h3> -->
+        <h3><span>Banco:</span> {{usuario.banco}}</h3>
+        <h3><span>Número de cuenta:</span> {{usuario.numero_cuenta}}</h3>
+    </div>
+</div>

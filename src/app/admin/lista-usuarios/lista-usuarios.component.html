@@ -1,0 +1,69 @@
+<div class="container pt-50" *ngIf="usuario.tipo == 'admin'">
+    <div class="row">
+        <h1>Lista de Usuarios</h1>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <mat-form-field>
+              <mat-label>Busqueda</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Busque por cualquier campo" #input>
+            </mat-form-field>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+              
+                <!-- Position Column -->
+                <ng-container matColumnDef="username">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</th>
+                  <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="apellido">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
+                  <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="nombre">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+                  <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="documento">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>DNI</th>
+                  <td mat-cell *matCellDef="let element"> {{element.documento}} </td>
+                </ng-container>
+              
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="telefono">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Teléfono</th>
+                  <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                  <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                  <td mat-cell *matCellDef="let element">
+                    <mat-icon aria-hidden="false" aria-label="Editar" class="edit" (click)="verUsuario(element)">remove_red_eye</mat-icon>
+                    <mat-icon aria-hidden="false" aria-label="Editar" class="edit" (click)="agregarPortafolioUsuario(element)">business_center</mat-icon>
+                    <mat-icon aria-hidden="false" aria-label="Editar" class="edit" (click)="editarUsuario(element)">edit</mat-icon>
+                    <mat-icon aria-hidden="false" aria-label="Editar" [ngClass]="{'unblock': element.estado == 1,'block': element.estado == 0}" (click)="stateUsuario(element)">
+                      <span *ngIf="element.estado == 0">lock</span>
+                      <span *ngIf="element.estado == 1">lock_open</span>
+                    </mat-icon>
+                  </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              <mat-paginator [pageSizeOptions]="[10, 20, 30]"></mat-paginator>
+        </div>
+    </div>
+</div>
+<div class="container pt-50" *ngIf="usuario.tipo != 'admin'">
+    <h1>Acceso Denegado</h1>
+</div>
+<div class="row mb-0"></div>

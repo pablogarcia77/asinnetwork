@@ -1,0 +1,38 @@
+.mb-0{
+    margin-bottom: 0;
+}
+.pt-50{
+    padding-top: 50px;
+}
+table {
+    width: 100%;
+    background-color: #242424;
+}
+.mat-cell, .mat-header-cell{
+    color: white;
+}
+.mat-paginator, .col{
+    background-color: #242424;
+    color: white;
+}
+input::placeholder, mat-label{
+    color: white;
+}
+mat-icon:hover{
+    cursor: pointer;
+}
+.edit:hover{
+    color: #0d47a1 ;
+}
+.block{
+    color: #b71c1c;
+}
+.block:hover{
+    color: #1b5e20;
+}
+.unblock{
+    color: #1b5e20;
+}
+.unblock:hover{
+    color: #b71c1c;
+}

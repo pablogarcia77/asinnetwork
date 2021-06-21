@@ -1,0 +1,39 @@
+<h1 class="center-align">Comunícate con nosotros para recibir mayor información.</h1>
+<h1>Envíanos un mensaje y nos pondremos en contacto contigo en la brevedad.</h1>
+<div class="row">
+    <form action="" class="col s12">
+        <div class="col s12 m6">
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput [formControl]="nombreFormControl">
+                <mat-error *ngIf="nombreFormControl.hasError('required')">
+                    El nombre es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col s12 m6">
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Ingrese un email válido
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                    El email es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col s12">
+            <mat-form-field class="example-full-width">
+                <mat-label>Mensaje</mat-label>
+                <textarea matInput [formControl]="mensajeFormControl"></textarea>
+                <mat-error *ngIf="mensajeFormControl.hasError('required')">
+                    Tiene que escribir un mensaje
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col s6">
+            <button type="submit" class="waves-effect waves-light btn red darken-4">Enviar</button>
+        </div>
+    </form>
+</div>

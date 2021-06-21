@@ -1,0 +1,42 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background:
+    radial-gradient(circle farthest-side at 0% 50%,#212121 23.5%,rgba(240,166,17,0) 0)21px 30px,
+    radial-gradient(circle farthest-side at 0% 50%,#242424 24%,rgba(240,166,17,0) 0)19px 30px,
+    linear-gradient(#212121 14%,rgba(240,166,17,0) 0, rgba(240,166,17,0) 85%,#212121 0)0 0,
+    linear-gradient(150deg,#212121 24%,#242424 0,#242424 26%,rgba(240,166,17,0) 0,rgba(240,166,17,0) 74%,#242424 0,#242424 76%,#212121 0)0 0,
+    linear-gradient(30deg,#212121 24%,#242424 0,#242424 26%,rgba(240,166,17,0) 0,rgba(240,166,17,0) 74%,#242424 0,#242424 76%,#212121 0)0 0,
+    linear-gradient(90deg,#242424 2%,#212121 0,#212121 98%,#242424 0%)0 0 #212121;
+    background-size: 40px 60px;
+    color: white;
+}
+#empresa{
+    text-align: justify;
+}
+.blanco{
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+/* .footer-copyright{
+    background-color: rgba(255, 255, 255, 0.015);
+} */
+.parallax-container{
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+.modal-content{
+    color: black;
+}
+
+.sidenav li > a , .sidenav li > a > i {
+    color: white;
+}
+.admin{
+    padding-left: 300px;
+}
+.tipoCuenta{
+    background-color: blue;
+    display: flex;
+    align-items: flex-start;
+}

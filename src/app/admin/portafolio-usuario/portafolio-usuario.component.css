@@ -1,0 +1,7 @@
+.mat-select-value{
+    color: black !important;
+}
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 25px;
+    padding-top: 15px;
+}

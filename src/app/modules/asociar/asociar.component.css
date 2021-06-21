@@ -1,0 +1,9 @@
+.mb-0{
+    margin-bottom: 0;
+}
+.blanco, .mat-select-value{
+    color: white, !important;
+}
+mat-select-value{
+    color:white;
+}

@@ -1,0 +1,154 @@
+.sidenav {
+    position: fixed;
+    width: 300px;
+    left: 0;
+    top: 0;
+    margin: 0;
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    height: 100%;
+    height: calc(100% + 60px);
+    height: -moz-calc(100%);
+    padding-bottom: 60px;
+    background-color: #fff;
+    z-index: 999;
+    overflow-y: auto;
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    -webkit-transform: translateX(-105%);
+            transform: translateX(-105%);
+}
+
+.sidenav.right-aligned {
+    right: 0;
+    -webkit-transform: translateX(105%);
+            transform: translateX(105%);
+    left: auto;
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+}
+
+.sidenav .collapsible {
+    margin: 0;
+}
+.sidenav > ul > li {
+    float: none;
+    line-height: 48px;
+}
+
+.sidenav > ul > li.active {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.sidenav > ul > li > a {
+    color: rgba(0, 0, 0, 0.87);
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 32px;
+}
+
+.sidenav > ul > li > a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.sidenav > ul > li > a.btn, .sidenav > ul > li > a.btn-large, .sidenav > ul > li > a.btn-small, .sidenav > ul > li > a.btn-large, .sidenav > ul > li > a.btn-flat, .sidenav > ul > li > a.btn-floating {
+    margin: 10px 15px;
+}
+
+.sidenav > ul > li > a.btn, .sidenav > ul > li > a.btn-large, .sidenav > ul > li > a.btn-small, .sidenav > ul > li > a.btn-large, .sidenav > ul > li > a.btn-floating {
+    color: #fff;
+}
+
+.sidenav > ul > li > a.btn-flat {
+    color: #343434;
+}
+
+
+
+.sidenav > ul > .divider {
+    margin: 8px 0 0 0;
+}
+
+.sidenav > ul > .subheader {
+    cursor: initial;
+    pointer-events: none;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 48px;
+}
+
+.sidenav > ul > .subheader:hover {
+    background-color: transparent;
+}
+
+.sidenav > ul > .user-view {
+    position: relative;
+    padding: 32px 32px 0;
+    margin-bottom: 8px;
+}
+
+.sidenav > ul > .user-view > a {
+    height: auto;
+    padding: 0;
+}
+
+.sidenav > ul > .user-view > a:hover {
+    background-color: transparent;
+}
+
+.user-view div.background {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.sidenav > ul > li > .user-view .circle, .sidenav > ul > li > .user-view .name, .sidenav > ul > li > .user-view .email {
+    display: block;
+}
+  
+.sidenav > ul > li > .user-view .circle {
+    height: 64px;
+    width: 64px;
+}
+
+.sidenav > ul > li > .user-view .name,
+.sidenav > ul > li > .user-view .email {
+    font-size: 14px;
+    line-height: 24px;
+}
+  
+.sidenav > ul > li > .user-view .name {
+    margin-top: 16px;
+    font-weight: 500;
+}
+  
+.sidenav > ul > li > .user-view .email {
+    padding-bottom: 16px;
+    font-weight: 400;
+}
+.blanco{
+    color: white;
+}
+.icono{
+    margin-right: 40px;
+    float: left;
+    width: 10px;
+}
+.footer-copyright{
+    text-align: center;
+}
+.creditos{
+    position: fixed;
+    bottom: 100px;
+    color: white;
+    text-align: center;
+}

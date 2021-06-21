@@ -1,0 +1,39 @@
+<mat-sidenav-container>
+    <mat-sidenav mode="side" opened  class="sidenav grey darken-4">
+        <ul style="margin:0">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img class="responsive-img" src="assets/images/fondo.jpg" alt="AsinNetwork">
+                    </div>
+                    <!-- <a href="#user"><img class="circle" src="https://img.17qq.com/images/hmmlggomopv.jpeg"></a> -->
+                    <span class="white-text name">{{usuario.nombre.toUpperCase()}} {{usuario.apellido.toUpperCase()}}</span>
+                    <span class="white-text email">{{usuario.email}}</span>
+                </div>
+            </li>
+            <li><a [routerLink]="['perfil']" class="blanco"><fa-icon [icon]="faIdCard" size="1x" class="icono"></fa-icon>Mi Perfil</a></li>
+            <li *ngIf="usuario.tipo != 'admin'"><a [routerLink]="['redes']" class="blanco"><fa-icon [icon]="faProjectDiagram" size="1x" class="icono"></fa-icon>Mi Red</a></li>
+            <li><div class="divider grey darken-3"></div></li>
+            <!-- Admin -->
+            <li *ngIf="usuario.tipo == 'admin'"><a [routerLink]="['portafolios']" class="blanco"><fa-icon [icon]="faBriefCase" size="1x" class="icono"></fa-icon>Gestionar Portafolios</a></li>
+            <li *ngIf="usuario.tipo == 'admin'"><a [routerLink]="['lista-de-usuarios']" class="blanco"><fa-icon [icon]="faUsers" size="1x" class="icono"></fa-icon>Ver Usuarios</a></li>
+            <!-- <li *ngIf="usuario.tipo == 'admin'"><a [routerLink]="['portafolios']" class="blanco"><fa-icon [icon]="faProjectDiagram" size="1x" class="icono"></fa-icon>Ver Redes</a></li> -->
+            <!-- Usuarios Normales -->
+            <!-- <li *ngIf="usuario.tipo != 'admin'"><a [routerLink]="['portafolios']" class="blanco"><fa-icon [icon]="faBriefCase" size="1x" class="icono"></fa-icon>Mis Portafolios</a></li> -->
+            <li *ngIf="usuario.tipo != 'admin'"><a [routerLink]="['asociar']" class="blanco"><fa-icon [icon]="faBriefCase" size="1x" class="icono"></fa-icon>Asociar a mi red</a></li>
+            <li *ngIf="usuario.tipo != 'admin'"><a [routerLink]="['ganancias']" class="blanco"><fa-icon [icon]="faCoffe" size="1x" class="icono"></fa-icon>Mis Ganancias</a></li>
+            <li *ngIf="usuario.tipo != 'admin'"><a [routerLink]="['herramientas']" class="blanco"><fa-icon [icon]="faAddressBook" size="1x" class="icono"></fa-icon>Herramientas</a></li>
+            <li><div class="divider grey darken-3"></div></li>
+            <li><a href="#" class="blanco" (click)="logOut()"><fa-icon [icon]="faSigOut" size="1x" class="icono"></fa-icon>Salir</a></li>
+        </ul>
+        <div class="creditos">
+            <app-creditos></app-creditos>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-menu-user></app-menu-user>
+        <body>
+            <router-outlet></router-outlet>
+        </body>
+    </mat-sidenav-content>
+</mat-sidenav-container>

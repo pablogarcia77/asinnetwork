@@ -1,0 +1,14 @@
+<h1 class="center-align" *ngIf="!idPatrocinador">¡Bienvenido!</h1>
+<div class="row" *ngIf="!idPatrocinador">
+    <h3>Hola {{data.user.username}}, bienvenido a Asin Network Argentina.</h3>
+    <h3>Te redireccionaremos a tu panel de usuario en breve. Puedes acceder directamente a el haciendo click en el boton "Ingresar"</h3>
+</div>
+<div class="row" *ngIf="idPatrocinador">
+    <h3>Sumaste a {{data.user.username}} a tu red.</h3>
+</div>
+<div class="row" *ngIf="!idPatrocinador">
+    <button type="button" [routerLink]="['panel']" class="col s12 waves-effect waves-light btn red darken-4" >Ingresar</button>
+</div>
+<div class="row" *ngIf="idPatrocinador">
+    <button type="button" (click)="cerrarModal()" class="col s12 waves-effect waves-light btn red darken-4">Aceptar</button>
+</div>

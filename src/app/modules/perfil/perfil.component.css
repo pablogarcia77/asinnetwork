@@ -1,0 +1,16 @@
+.icono{
+    width: 50px;
+    margin-right: 10px;
+}
+.blanco{
+    color: white;
+}
+input[disabled]{
+    color: grey;
+}
+.pt-50{
+    padding-top: 50px;
+}
+.mb-0{
+    margin-bottom: 0;
+}
