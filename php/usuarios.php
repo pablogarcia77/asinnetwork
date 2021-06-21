@@ -60,14 +60,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 //Borrar
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
-	$id = $_GET['id'];
-  $estado = $_GET['estado'];
-  $statement = $dbConn->prepare("UPDATE usuario SET estado=:estado WHERE id=:id");
-  $statement->bindValue(':id', $id);
-  $statement->bindValue(':estado', $estado);
-  $statement->execute();
-	header("HTTP/1.1 200 OK");
-	exit();
+  if (!isset($_GET['estado'])){
+    $id = $_GET['id'];
+    $statement = $dbConn->prepare("DELETE FROM usuario WHERE id=:id");
+    $statement->bindValue(':id', $id);
+    $statement->execute();
+    header("HTTP/1.1 200 OK");
+    exit();
+  }else{
+    $id = $_GET['id'];
+    $estado = $_GET['estado'];
+    $statement = $dbConn->prepare("UPDATE usuario SET estado=:estado WHERE id=:id");
+    $statement->bindValue(':id', $id);
+    $statement->bindValue(':estado', $estado);
+    $statement->execute();
+    header("HTTP/1.1 200 OK");
+    exit();
+  }
 }
 
 //Actualizar

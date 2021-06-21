@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { Arbol } from 'src/app/models/arbol';
 import { Usuario } from 'src/app/models/usuario';
 import { ArbolService } from 'src/app/services/arbol.service';
@@ -8,7 +8,7 @@ import { Edge, Node, Layout } from '@swimlane/ngx-graph';
 import { Nodex } from 'src/app/models/nodex';
 import { Enlace } from 'src/app/models/enlace';
 import { Subject } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ModalUsuarioComponent } from '../modal-usuario/modal-usuario.component';
 import { Porta } from 'src/app/models/porta';
 import { PortafolioService } from 'src/app/services/portafolio.service';
@@ -55,6 +55,8 @@ export class MiredComponent implements OnInit {
     private arbolService: ArbolService,
     private userService: UsuariosService,
     private portafolioService: PortafolioService,
+    @Optional()@Inject(MAT_DIALOG_DATA)
+    public data: {usuario: Usuario,posicion: string},
     public dialog: MatDialog
   ) {
     this.usuario = new Usuario();
@@ -77,14 +79,20 @@ export class MiredComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.usuario = JSON.parse(localStorage.getItem('currentUser') || '');
+    console.log(this.data)
+    let usuario = new Usuario();
+    usuario = JSON.parse(localStorage.getItem('currentUser') || '');
+    this.usuario = (usuario.tipo == "normal") ? usuario : this.data.usuario;
+    this.view = (usuario.tipo == "normal") ? [1050, 750] : [1400,750];
+
+    console.log(this.usuario)
     this.dibujar();
     // console.log(this.nodos);
   }
 
   dibujar() {
     this.zoomToFit$.next(true)
-    this.usuario = JSON.parse(localStorage.getItem('currentUser') || '');
+    // this.usuario = JSON.parse(localStorage.getItem('currentUser') || '');
 
     let nodex = new Nodex();
     nodex.id = this.usuario.id.toString();

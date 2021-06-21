@@ -16,6 +16,9 @@
 .nodo{
     fill: #fff;
 }
+.nodoW{
+    fill: #000;
+}
 .chart{
 
     transform: scale(0.8);

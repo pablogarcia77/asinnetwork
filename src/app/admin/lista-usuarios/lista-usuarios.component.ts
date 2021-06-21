@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Usuario } from 'src/app/models/usuario';
+import { MiredComponent } from 'src/app/modules/mired/mired.component';
 import { ModalUsuarioComponent } from 'src/app/modules/modal-usuario/modal-usuario.component';
 import { PerfilComponent } from 'src/app/modules/perfil/perfil.component';
 import { UsuariosService } from 'src/app/services/usuarios.service';
@@ -19,6 +20,7 @@ import { PortafolioUsuarioComponent } from '../portafolio-usuario/portafolio-usu
 export class ListaUsuariosComponent implements OnInit {
 
   public usuario: Usuario;
+  public usuarioEliminar!: Usuario;
   displayedColumns: string[] = ['username', 'apellido', 'nombre', 'documento', 'telefono','acciones'];
   public dataSource : MatTableDataSource<Usuario>;
 
@@ -109,6 +111,31 @@ export class ListaUsuariosComponent implements OnInit {
           usuario: usuario
         },
         width: '60%'
+      }
+    )
+  }
+
+  deleteUser(template: TemplateRef<any>, usuario: Usuario){
+    this.dialog.open(template)
+    this.usuarioEliminar = usuario
+  }
+
+  deleteUsuario(){
+    this.usuariosService.deleteUsuario(this.usuarioEliminar).subscribe(
+      response => {
+        console.log(response)
+      }
+    )
+  }
+
+  verRed(usuario: Usuario){
+    this.dialog.open(
+      MiredComponent,
+      {
+        data: {
+          usuario: usuario
+        },
+        width: '100%',
       }
     )
   }

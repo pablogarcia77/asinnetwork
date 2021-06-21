@@ -70,4 +70,8 @@ export class UsuariosService {
     return this.http.delete(this.urlBase + '/usuarios.php?id=' + usuario.id + '&estado=' + estado);
   }
 
+  deleteUsuario(usuario: Usuario):Observable<any>{
+    return this.http.delete(this.urlBase + '/usuarios.php?id=' + usuario.id);
+  }
+
 }

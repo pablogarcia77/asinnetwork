@@ -36,3 +36,6 @@ mat-icon:hover{
 .unblock:hover{
     color: #b71c1c;
 }
+.btn{
+    margin-left: 10px;
+}
