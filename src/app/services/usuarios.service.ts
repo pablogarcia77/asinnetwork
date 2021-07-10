@@ -49,6 +49,8 @@ export class UsuariosService {
     fd.append('apellido',usuario.apellido);
     fd.append('nombre',usuario.nombre);
     fd.append('documento',usuario.documento);
+    fd.append('url_documento_frente',usuario.url_documento_frente);
+    fd.append('url_documento_dorso',usuario.url_documento_dorso);
     fd.append('email',usuario.email);
     fd.append('telefono',usuario.telefono);
     fd.append('domicilio',usuario.domicilio);

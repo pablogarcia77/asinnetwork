@@ -46,6 +46,25 @@
     </div>
     <div class="row">
         <div class="col s6">
+            <mat-label>Foto del Documento (Frente)</mat-label>
+            <button type="button" class="col s12 waves-effect waves-light btn red darken-4" (click)="dniFrente.click()">Subir Imagen</button>
+            <mat-progress-bar color="primary"
+            mode="determinate"
+            [value]="progressFrente"></mat-progress-bar>
+            <input hidden type="file" #dniFrente mat-raised-button accept="image/*" (change)="readThis($event,'frente')">
+        </div>
+        <div class="col s6">
+            <mat-label>Foto del Documento (Dorso)</mat-label>
+            <button type="button" class="col s12 waves-effect waves-light btn red darken-4" (click)="dniDorso.click()">Subir Imagen</button>
+            <mat-progress-bar color="primary"
+            mode="determinate"
+            [value]="progressDorso"></mat-progress-bar>
+            <input hidden type="file" #dniDorso mat-raised-button accept="image/*" (change)="readThis($event,'dorso')">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s6">
             <mat-form-field class="example-full-width">
                 <mat-label>Domicilio Legal</mat-label>
                 <input matInput [(ngModel)]="usuario.domicilio">

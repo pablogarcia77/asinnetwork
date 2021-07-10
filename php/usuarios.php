@@ -41,9 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $input = $_POST;
     $sql = "INSERT INTO usuario
-          (username,password,apellido,nombre,documento,email,telefono,domicilio,banco,numero_cuenta)
+          (username,password,apellido,nombre,documento,url_documento_frente,url_documento_dorso,email,telefono,domicilio,banco,numero_cuenta)
           VALUES
-          (:username,:password,:apellido,:nombre,:documento,:email,:telefono,:domicilio,:banco,:numero_cuenta)";
+          (:username,:password,:apellido,:nombre,:documento,:url_documento_frente,:url_documento_dorso,:email,:telefono,:domicilio,:banco,:numero_cuenta)";
     $statement = $dbConn->prepare($sql);
     bindAllValues($statement, $input);
     $statement->execute();

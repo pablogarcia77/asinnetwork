@@ -5,6 +5,8 @@ export class Usuario{
     apellido!: string;
     nombre!: string;
     documento!: string;
+    url_documento_frente!: string;
+    url_documento_dorso!: string;
     email!: string;
     telefono!: string;
     domicilio!: string;

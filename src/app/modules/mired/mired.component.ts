@@ -51,6 +51,8 @@ export class MiredComponent implements OnInit {
   update$: Subject<boolean> = new Subject();
   center$: Subject<boolean> = new Subject();
 
+  public weeks!: any;
+
   constructor(
     private arbolService: ArbolService,
     private userService: UsuariosService,
@@ -104,7 +106,21 @@ export class MiredComponent implements OnInit {
     this.arbolService.getMiArbol(this.user).subscribe(
       response => {
 
-        // console.log(response)
+        console.log(response)
+        let f1 = new Date(response[0].fecha_p1)
+        let f2 = new Date()
+
+        console.log(f1)
+        console.log(f2)
+
+        let time = f2.getTime() - f1.getTime()
+
+
+        this.weeks = Math.trunc(time/(1000 * 3600 * 24 * 7)) * response[0].puntos_p1;
+
+
+
+        
           nodex.portafolio = new Array<Porta>();
           // Seteo Portafolios de la raiz
           let width = 0;

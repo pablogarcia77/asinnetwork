@@ -48,6 +48,7 @@ import { EditarUsuarioComponent } from './admin/editar-usuario/editar-usuario.co
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -105,6 +106,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

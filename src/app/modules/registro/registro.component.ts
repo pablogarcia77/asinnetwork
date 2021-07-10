@@ -12,6 +12,8 @@ import { LoginService } from 'src/app/services/login.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { ArbolService } from 'src/app/services/arbol.service';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { ImageService } from 'src/app/services/image.service';
 
 interface Patrocinador {
   value: string;
@@ -36,6 +38,10 @@ export class RegistroComponent implements OnInit {
   public estado: boolean=true;
 
   public posicionNueva!: string;
+
+  public image: any;
+  public progressFrente: number = 0;
+  public progressDorso: number = 0;
   
   constructor(
     private usuariosService: UsuariosService,
@@ -43,6 +49,7 @@ export class RegistroComponent implements OnInit {
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA)
     public data: {id:number},
+    private imageService: ImageService
   ) {
     this.usuario = new Usuario();
     this.error = false;
@@ -93,7 +100,7 @@ export class RegistroComponent implements OnInit {
     let idPatrocinador = (this.id == undefined) ? undefined : this.id;
     this.usuariosService.postUsuario(this.usuario).subscribe(
       response => {
-        console.log(response);
+        // console.log(response);
         this.posicionNueva = this.usuario.posicion;
         this.usuario = response;
         // User created successfully
@@ -129,12 +136,50 @@ export class RegistroComponent implements OnInit {
       posicion: this.posicionNueva
     };
 
-    console.log(arbol);
+    // console.log(arbol);
 
     this.arbolService.postArbol(arbol).subscribe(
       () => {
         this.estado = false;
       }
     )
+  }
+
+
+  readThis(event: any,tipo: any): void {
+    let file: File = event.target.files[0];
+    let myReader: FileReader = new FileReader();
+    myReader.readAsDataURL(file);
+    myReader.onloadend = e => {
+      this.image = myReader.result;
+      let image = {
+        "encodedImage": this.image
+      };
+
+      // console.log(image)
+      this.imageService.uploadImage(image).subscribe(
+
+        (event: HttpEvent<any>) =>{
+          switch (event.type) {
+            case HttpEventType.UploadProgress:
+              if(tipo == 'frente'){this.progressFrente = Math.round(event.loaded / event.total * 100)}
+              if(tipo == 'dorso'){this.progressDorso = Math.round(event.loaded / event.total * 100)}
+              break;
+            case HttpEventType.Response:
+              if(tipo == 'frente'){
+                this.usuario.url_documento_frente = event.body.data
+                this.progressFrente = 0
+              }
+              if(tipo == 'dorso'){
+                this.usuario.url_documento_dorso = event.body.data
+                this.progressDorso = 0
+              }
+              // console.log(this.usuario)
+          }
+        }
+
+
+      )
+    }
   }
 }
