@@ -8,6 +8,7 @@ import { ArbolService } from 'src/app/services/arbol.service';
 import { PortafolioService } from 'src/app/services/portafolio.service';
 import { forkJoin } from 'rxjs';
 import { MatDatepicker } from '@angular/material/datepicker';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-portafolio-usuario',
@@ -45,7 +46,8 @@ export class PortafolioUsuarioComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA)
     public data: {usuario: Usuario},
     private arbolService: ArbolService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar
   ) {
     this.portafolios = new Array<Portafolio>();
     this.numeros = [1,2,3];
@@ -63,7 +65,7 @@ export class PortafolioUsuarioComponent implements OnInit {
 
     this.portafolioService.getPortafoliosArbol(this.usuario).subscribe(
       resp => {
-        console.log(resp);
+        // console.log(resp);
         this.semana1 = (resp[0].s1) ? resp[0].s1 : null
         this.semana2 = (resp[0].s2) ? resp[0].s2 : null
         this.semana3 = (resp[0].s3) ? resp[0].s3 : null
@@ -83,7 +85,7 @@ export class PortafolioUsuarioComponent implements OnInit {
 
   actualizarPortafolios(){
  
-    console.log(this.selectedValue1)
+    // console.log(this.selectedValue1)
 
     const getPorta1 = this.portafolioService.getPortafolio(this.selectedValue1)
     const getPorta2 = this.portafolioService.getPortafolio(this.selectedValue2)
@@ -130,6 +132,12 @@ export class PortafolioUsuarioComponent implements OnInit {
     this.arbolService.putArbol(this.arbol).subscribe(
       () => {
         this.actualizado = true;
+        this.snackBar.open(
+          'Datos guardados','Aceptar',
+          {
+            duration: 1500
+          }
+        )
         setTimeout(() => {
           this.dialog.closeAll();
         }, 1500);

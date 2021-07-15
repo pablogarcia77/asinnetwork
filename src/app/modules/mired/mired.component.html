@@ -11,11 +11,29 @@
             <div class="col s6">Puntos a izquierda: {{puntosIzquierda}}</div>
             <div class="col s6">Puntos a derecha: {{puntosDerecha}}</div>
           </div>
+          <div class="row" *ngIf="data">
+            <button mat-button class="col s12 waves-effect waves-light btn red darken-4" (click)="editarGanancias()">Editar Ganancias</button>
+          </div>
+          <!-- <div class="row" *ngIf="arbol?.fecha_p1">
+            <div class="col s3">Portafolio: </div>
+            <div class="col s3">Inicio: {{arbol.fecha_p1 | date:'d/MM/yy'}}</div>
+            <div class="col s3">Semanas: {{weeks}}/{{arbol.s1}}</div>
+            <div class="col s3">Generado: ${{weeks * arbol.puntos_p1}}</div>
+          </div>
+          <div class="row" *ngIf="arbol?.fecha_p2">
+            <div class="col s3">Portafolio: </div>
+            <div class="col s3">Inicio: {{arbol.fecha_p2 | date:'d/MM/yy'}}</div>
+            <div class="col s3">Semanas: {{weeks}}/{{arbol.s2}}</div>
+            <div class="col s3">Generado: ${{weeks * arbol.puntos_p2}}</div>
+          </div>
+          <div class="row" *ngIf="arbol?.fecha_p3">
+            <div class="col s3">Portafolio: </div>
+            <div class="col s3">Inicio: {{arbol.fecha_p3 | date:'d/MM/yy'}}</div>
+            <div class="col s3">Semanas: {{weeks}}/{{arbol.s3}}</div>
+            <div class="col s3">Generado: ${{weeks * arbol.puntos_p3}}</div>
+          </div> -->
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col s12">weeks: {{weeks}}</div>
     </div>
     <div class="row mb-0">
         <ngx-graph
@@ -39,7 +57,7 @@
           <svg:g class="node" (click)="verUsuario(node.id,node.posicion)">
             <!-- <svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height" [attr.fill]="node.data.color" /> -->
             <svg:image *ngFor="let port of node.portafolio" [attr.xlink:href]="port.image" [attr.x]="port.x" y="-10" height="50px" width="50px"/>
-            <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height -10" [ngClass]="{'nodo': usuario.tipo=='normal', 'nodoW': usuario.tipo!='normal'}">{{node.label}}</svg:text>
+            <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height -10" [ngClass]="{'nodo': !data, 'nodoW': data}">{{node.label}}</svg:text>
           </svg:g>
         </ng-template>
 

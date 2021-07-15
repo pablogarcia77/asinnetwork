@@ -49,6 +49,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { EditarGananciasComponent } from './admin/editar-ganancias/editar-ganancias.component';
 
 
 
@@ -80,6 +81,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     GestionPortafoliosComponent,
     PortafolioUsuarioComponent,
     EditarUsuarioComponent,
+    EditarGananciasComponent,
   ],
   imports: [
     BrowserModule,

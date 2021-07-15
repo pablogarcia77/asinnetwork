@@ -1,5 +1,16 @@
 <div class="container pt-50">
-    <div class="row mb-0">
-        <h1>Proximamente podras ver tus ganancias</h1>
+    <div class="row">
+        <h1>Mis Ganancias</h1>
+    </div>
+    <div *ngIf="ganancia">
+        <div class="row">
+            <p>Fecha de Cobro: {{fecha_cobro | date:'d/MM/yy'}}</p>
+        </div>
+        <div class="row mb-0">
+            <p>Cantidad a cobrar: ${{ganancia}}</p>
+        </div>
+    </div>
+    <div class="row mb-0" *ngIf="!ganancia">
+        <h1>No tienes datos por el momento</h1>
     </div>
 </div>

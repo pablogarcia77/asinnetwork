@@ -12,6 +12,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ModalUsuarioComponent } from '../modal-usuario/modal-usuario.component';
 import { Porta } from 'src/app/models/porta';
 import { PortafolioService } from 'src/app/services/portafolio.service';
+import { EditarGananciasComponent } from 'src/app/admin/editar-ganancias/editar-ganancias.component';
 
 @Component({
   selector: 'app-mired',
@@ -81,42 +82,50 @@ export class MiredComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.data)
+    // console.log(this.data)
     let usuario = new Usuario();
     usuario = JSON.parse(localStorage.getItem('currentUser') || '');
-    this.usuario = (usuario.tipo == "normal") ? usuario : this.data.usuario;
-    this.view = (usuario.tipo == "normal") ? [1050, 750] : [1400,750];
+    // console.log (usuario)
+    this.view = (usuario.tipo === "normal") ? [1050, 750] : [1400,750];
+    
+    if(this.data){
+      this.usuario = this.data.usuario
+      // console.log('usuario normalito')
+    }else{
+      // console.log('administrador')
+      this.usuario = usuario
+    }
 
-    console.log(this.usuario)
-    this.dibujar();
+    // console.log(this.usuario)
+    this.dibujar(this.usuario);
     // console.log(this.nodos);
   }
 
-  dibujar() {
+  dibujar(usu) {
     this.zoomToFit$.next(true)
     // this.usuario = JSON.parse(localStorage.getItem('currentUser') || '');
 
     let nodex = new Nodex();
-    nodex.id = this.usuario.id.toString();
-    nodex.label = this.usuario.username;
+    nodex.id = usu.id.toString();
+    nodex.label = usu.username;
     this.nodos.push(nodex);
 
-    this.user = this.usuario;
+    this.user = usu;
 
     this.arbolService.getMiArbol(this.user).subscribe(
       response => {
-
-        console.log(response)
+        this.arbol = response[0]
         let f1 = new Date(response[0].fecha_p1)
         let f2 = new Date()
 
-        console.log(f1)
-        console.log(f2)
+        // console.log(f1)
+        // console.log(f2)
 
         let time = f2.getTime() - f1.getTime()
 
 
-        this.weeks = Math.trunc(time/(1000 * 3600 * 24 * 7)) * response[0].puntos_p1;
+        // this.weeks = Math.trunc(time/(1000 * 3600 * 24 * 7)) * response[0].puntos_p1;
+        this.weeks = Math.trunc(time/(1000 * 3600 * 24 * 7))
 
 
 
@@ -405,4 +414,15 @@ export class MiredComponent implements OnInit {
     )
   }
 
+  editarGanancias(){
+     this.dialog.open(
+       EditarGananciasComponent,
+       {
+         width: '60%',
+         data: {
+           usuario: this.data.usuario
+         }
+       }
+     )
+  }
 }

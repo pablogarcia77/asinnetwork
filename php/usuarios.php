@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 if ($_SERVER['REQUEST_METHOD'] == 'GET'){
   if (!isset($_GET['id'])){
     //Mostrar todos los usuarios
-    $sql = $dbConn->prepare("SELECT id,apellido,nombre,username,telefono,documento,banco,numero_cuenta,estado,email,domicilio FROM usuario");
+    $sql = $dbConn->prepare("SELECT id,apellido,nombre,username,telefono,documento,banco,numero_cuenta,estado,email,domicilio,tipo FROM usuario");
     $sql->execute();
     $sql->setFetchMode(PDO::FETCH_ASSOC);
     header("HTTP/1.1 200 OK");
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
     exit();
   }else {
     //Mostrar un usuario especifico
-    $sql = $dbConn->prepare("SELECT id,apellido,nombre,username,telefono,documento,banco,numero_cuenta,estado,email,domicilio FROM usuario WHERE id=:id");
+    $sql = $dbConn->prepare("SELECT id,apellido,nombre,username,telefono,documento,banco,numero_cuenta,estado,email,domicilio,tipo FROM usuario WHERE id=:id");
     $sql->bindValue(':id', $_GET['id']);
     $sql->execute();
     $sql->setFetchMode(PDO::FETCH_ASSOC);
