@@ -9,6 +9,7 @@ import { MiredComponent } from 'src/app/modules/mired/mired.component';
 import { ModalUsuarioComponent } from 'src/app/modules/modal-usuario/modal-usuario.component';
 import { PerfilComponent } from 'src/app/modules/perfil/perfil.component';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { DocumentoUsuarioComponent } from '../documento-usuario/documento-usuario.component';
 import { EditarUsuarioComponent } from '../editar-usuario/editar-usuario.component';
 import { PortafolioUsuarioComponent } from '../portafolio-usuario/portafolio-usuario.component';
 
@@ -21,7 +22,7 @@ export class ListaUsuariosComponent implements OnInit {
 
   public usuario: Usuario;
   public usuarioEliminar!: Usuario;
-  displayedColumns: string[] = ['username', 'apellido', 'nombre', 'documento', 'telefono','acciones'];
+  displayedColumns: string[] = ['username', 'apellido', 'nombre', 'documento', 'telefono','registro','acciones'];
   public dataSource : MatTableDataSource<Usuario>;
 
   @ViewChild(MatSort, {static: false}) sort!: MatSort;
@@ -44,7 +45,7 @@ export class ListaUsuariosComponent implements OnInit {
   cargarTabla(){
     this.usuariosService.getUsuarios().subscribe(
       response => {
-        // console.log(response);
+        console.log(response);
         this.dataSource = new MatTableDataSource(response);
         this.dataSource.sort = this.sort
         this.dataSource.paginator = this.paginator
@@ -136,6 +137,18 @@ export class ListaUsuariosComponent implements OnInit {
           usuario: usuario
         },
         width: '100%',
+      }
+    )
+  }
+
+  verDocumento(usuario: Usuario){
+    this.dialog.open(
+      DocumentoUsuarioComponent,
+      {
+        data: {
+          usuario: usuario
+        },
+        width: '100%'
       }
     )
   }

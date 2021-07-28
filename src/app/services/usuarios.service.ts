@@ -57,6 +57,7 @@ export class UsuariosService {
     // fd.append('posicion',usuario.posicion);
     fd.append('banco',usuario.banco);
     fd.append('numero_cuenta',usuario.numero_cuenta);
+    fd.append('registro',usuario.registro);
     return this.http.post(this.urlBase + '/usuarios.php',fd);
   }
 

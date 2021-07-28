@@ -15,6 +15,7 @@ export class Usuario{
     numero_cuenta!: string;
     tipo!: string
     estado!: string;
+    registro!: string;
     constructor(
         
     ){}

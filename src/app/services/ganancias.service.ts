@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Ganancia } from '../models/ganancia';
 import { Usuario } from '../models/usuario';
 
 
@@ -38,13 +39,25 @@ export class GananciasService {
     return this.http.get(this.urlBase + '/ganancias.php?id_usuario=' + id);
   }
 
-  postGanancia(id: number,ganancia: number,f_cobro: Date):Observable<any>{
+  postGanancia(id: number,ganancia: Ganancia):Observable<any>{
     const fd = new FormData();
     fd.append('id_usuario',id.toString());
-    fd.append('ganancia',ganancia.toString());
-    const fecha = f_cobro.toISOString();
-    console.log(fecha)
+    fd.append('total',ganancia.total.toString());
+    fd.append('venta_directa',ganancia.venta_directa.toString());
+    fd.append('primera_linea',ganancia.primera_linea.toString());
+    fd.append('segunda_linea',ganancia.segunda_linea.toString());
+    fd.append('tercera_linea',ganancia.tercera_linea.toString());
+    fd.append('cuarta_linea',ganancia.cuarta_linea.toString());
+    fd.append('puntos_izquierda',ganancia.puntos_izquierda.toString());
+    fd.append('puntos_derecha',ganancia.puntos_derecha.toString());
+    fd.append('binario',ganancia.binario.toString());
+    fd.append('semanal',ganancia.semanal.toString());
+    const fecha = ganancia.fecha_cobro.toISOString();
     fd.append('fecha_cobro',fecha);
+
+    console.log(id)
+    console.log(ganancia)
+    console.log(ganancia.fecha_cobro.toISOString())
     return this.http.post(this.urlBase + '/ganancias.php',fd);
   }
 

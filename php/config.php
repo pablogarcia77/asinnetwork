@@ -3,8 +3,8 @@
 $db = [
     'host' => 'localhost',
     'username' => 'root',
-    'password' => '',
-    'db' => 'asinnet' //Cambiar al nombre de tu base de datos
+    'password' => 'rootroot',
+    'db' => 'asinnetwork' //Cambiar al nombre de tu base de datos
 ];
 
 ?>

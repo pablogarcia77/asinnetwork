@@ -95,8 +95,9 @@ export class RegistroComponent implements OnInit {
   // Submit form
   enviarDatos(){
     
-    // console.log(this.usuario);
+    console.log(this.usuario);
     // console.log('patrocinador: ' + this.id);
+    this.usuario.registro = (this.id == undefined) ? "Directo" : "Asociado";
     let idPatrocinador = (this.id == undefined) ? undefined : this.id;
     this.usuariosService.postUsuario(this.usuario).subscribe(
       response => {

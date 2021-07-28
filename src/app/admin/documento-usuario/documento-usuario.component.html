@@ -1,0 +1,11 @@
+<div class="row">
+    <h1>Documento de: {{usuario.apellido}}, {{usuario.nombre}}</h1>
+</div>
+<div class="row">
+    <div class="col s6">
+        <img [src]="usuario.url_documento_frente" class="responsive-img" alt="Frente">
+    </div>
+    <div class="col s6">
+        <img [src]="usuario.url_documento_dorso" class="responsive-img" alt="Dorso">
+    </div>
+</div>

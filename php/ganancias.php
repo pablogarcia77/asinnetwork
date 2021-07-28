@@ -6,8 +6,13 @@ include "utils.php";
 $dbConn =  connect($db);
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
-header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+header("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
+header("Access-Control-Expose-Headers: Content-Length, X-JSON");
+header("Content-Type: application/json");
+header("Access-Control-Max-Age: 60");
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {    
+  return 0;    
+} 
 /*
   listar todos los comercios
  */
@@ -37,15 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $input = $_POST;
     $sql = "INSERT INTO ganancias
-          (id_usuario,ganancia,fecha_cobro)
+          (id_usuario,total,fecha_cobro,venta_directa,primera_linea,segunda_linea,tercera_linea,cuarta_linea,binario,puntos_izquierda,puntos_derecha,semanal)
           VALUES
-          (:id_usuario,:ganancia,:fecha_cobro)";
+          (:id_usuario,:total,:fecha_cobro,:venta_directa,:primera_linea,:segunda_linea,:tercera_linea,:cuarta_linea,:binario,:puntos_izquierda,:puntos_derecha,:semanal)";
     $statement = $dbConn->prepare($sql);
     bindAllValues($statement, $input);
     $statement->execute();
     $postId = $dbConn->lastInsertId();
     if($postId){
-      $input['id'] = $postId;
+      $input['id_usuario'] = $postId;
       header("HTTP/1.1 200 OK");
       echo json_encode($input);
       exit();

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Ganancia } from 'src/app/models/ganancia';
 import { Usuario } from 'src/app/models/usuario';
 import { GananciasService } from 'src/app/services/ganancias.service';
 
@@ -13,9 +14,7 @@ export class EditarGananciasComponent implements OnInit {
 
   public usuario: Usuario;
 
-  public ganancia: number;
-
-  public fecha_cobro: Date;
+  public ganancia!: Ganancia;
 
   constructor(
     @Optional()@Inject(MAT_DIALOG_DATA)
@@ -25,6 +24,7 @@ export class EditarGananciasComponent implements OnInit {
     private dialog: MatDialog
   ) {
     this.usuario = new Usuario();
+    this.ganancia = new Ganancia();
   }
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class EditarGananciasComponent implements OnInit {
 
   editarGanancias(){
     // console.log(this.ganancia)
-    this.gananciasService.postGanancia(this.usuario.id,this.ganancia,this.fecha_cobro).subscribe(
+    this.gananciasService.postGanancia(this.usuario.id,this.ganancia).subscribe(
       response => {
         // console.log(response)
         this.snackbar.open(

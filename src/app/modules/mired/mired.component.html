@@ -4,12 +4,38 @@
         <h1 class="col s2">Mi Red</h1>
         <div class="col s10">
           <div class="row">
-            <div class="col s6">Cantidad a izquierda: {{izquierda}}</div>
-            <div class="col s6">Cantidad a derecha: {{derecha}}</div>
-          </div>
-          <div class="row">
-            <div class="col s6">Puntos a izquierda: {{puntosIzquierda}}</div>
-            <div class="col s6">Puntos a derecha: {{puntosDerecha}}</div>
+            <div class="col s4">
+              <div class="row">
+                <div class="col s12">Cantidad a izquierda: {{izquierda}}</div>
+                <div class="col s12" *ngIf="data">Puntos a izquierda (autocalculado): {{puntosIzquierda}}</div>
+                <div class="col s12">Puntos a izquierda: {{ganancias?.puntos_izquierda}}</div>
+                <div class="col s12">
+                  <p>Ganancia Semanal: ${{ganancias?.semanal}}</p>
+                  <!-- <p *ngIf="arbol?.p1">Portafolio 1: ${{generado_p1}}</p>
+                  <p *ngIf="arbol?.p2">Portafolio 2: ${{generado_p2}}</p>
+                  <p *ngIf="arbol?.p3">Portafolio 3: ${{generado_p3}}</p> -->
+                </div>
+              </div>
+            </div>
+            <div class="col s4">
+              <div class="row">
+                <div class="col s12">Cantidad a derecha: {{derecha}}</div>
+                <div class="col s12" *ngIf="data">Puntos a derecha (autocalculado): {{puntosDerecha}}</div>
+                <div class="col s12">Puntos a derecha: {{ganancias?.puntos_derecha}}</div>
+              </div>
+            </div>
+            <div class="col s4">
+              <div class="row">
+                <div class="col s12">Comisión: {{ganancias?.fecha_cobro | date:'d/MM/yy'}}</div>
+                <div class="col s12">Venta Directa: ${{ganancias?.venta_directa}}</div>
+                <div class="col s12">Primera Línea: ${{ganancias?.primera_linea}}</div>
+                <div class="col s12">Segunda Línea: ${{ganancias?.segunda_linea}}</div>
+                <div class="col s12">Tercer Línea: ${{ganancias?.tercera_linea}}</div>
+                <div class="col s12">Cuarta Línea: ${{ganancias?.cuarta_linea}}</div>
+                <div class="col s12">Binario: ${{ganancias?.binario}}</div>
+                <div class="col s12">Total a Cobrar: ${{ganancias?.total}}</div>
+              </div>
+            </div>
           </div>
           <div class="row" *ngIf="data">
             <button mat-button class="col s12 waves-effect waves-light btn red darken-4" (click)="editarGanancias()">Editar Ganancias</button>

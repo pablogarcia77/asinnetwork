@@ -13,6 +13,8 @@ import { ModalUsuarioComponent } from '../modal-usuario/modal-usuario.component'
 import { Porta } from 'src/app/models/porta';
 import { PortafolioService } from 'src/app/services/portafolio.service';
 import { EditarGananciasComponent } from 'src/app/admin/editar-ganancias/editar-ganancias.component';
+import { GananciasService } from 'src/app/services/ganancias.service';
+import { Ganancia } from 'src/app/models/ganancia';
 
 @Component({
   selector: 'app-mired',
@@ -52,12 +54,17 @@ export class MiredComponent implements OnInit {
   update$: Subject<boolean> = new Subject();
   center$: Subject<boolean> = new Subject();
 
-  public weeks!: any;
+  public generado_p1!: any;
+  public generado_p2!: any;
+  public generado_p3!: any;
+
+  public ganancias!: Ganancia;
 
   constructor(
     private arbolService: ArbolService,
     private userService: UsuariosService,
     private portafolioService: PortafolioService,
+    private gananciasService: GananciasService,
     @Optional()@Inject(MAT_DIALOG_DATA)
     public data: {usuario: Usuario,posicion: string},
     public dialog: MatDialog
@@ -77,6 +84,8 @@ export class MiredComponent implements OnInit {
     this.derecha=0;
     
     this.view = [1050, 750];
+
+    this.ganancias = new Ganancia();
 
   }
 
@@ -99,6 +108,13 @@ export class MiredComponent implements OnInit {
     // console.log(this.usuario)
     this.dibujar(this.usuario);
     // console.log(this.nodos);
+
+    this.gananciasService.getGananciaUsuario(this.usuario.id).subscribe(
+      response => {
+        console.log(response[0])
+        this.ganancias = response[0]
+      }
+    )
   }
 
   dibujar(usu) {
@@ -116,19 +132,24 @@ export class MiredComponent implements OnInit {
       response => {
         this.arbol = response[0]
         let f1 = new Date(response[0].fecha_p1)
-        let f2 = new Date()
+        let f2 = new Date(response[0].fecha_p2)
+        let f3 = new Date(response[0].fecha_p3)
+        let hoy = new Date()
 
         // console.log(f1)
         // console.log(f2)
 
-        let time = f2.getTime() - f1.getTime()
-
+        let time1 = hoy.getTime() - f1.getTime()
+        let time2 = hoy.getTime() - f2.getTime()
+        let time3 = hoy.getTime() - f3.getTime()
 
         // this.weeks = Math.trunc(time/(1000 * 3600 * 24 * 7)) * response[0].puntos_p1;
-        this.weeks = Math.trunc(time/(1000 * 3600 * 24 * 7))
+        this.generado_p1 = Math.trunc(time1/(1000 * 3600 * 24 * 7)) * response[0].puntos_p1
+        this.generado_p2 = Math.trunc(time2/(1000 * 3600 * 24 * 7)) * response[0].puntos_p2
+        this.generado_p3 = Math.trunc(time3/(1000 * 3600 * 24 * 7)) * response[0].puntos_p3
 
 
-
+        console.log(this.arbol)
         
           nodex.portafolio = new Array<Porta>();
           // Seteo Portafolios de la raiz
