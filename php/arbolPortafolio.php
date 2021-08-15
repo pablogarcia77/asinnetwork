@@ -26,7 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
       $sql->execute();
       $sql->setFetchMode(PDO::FETCH_ASSOC);
       header("HTTP/1.1 200 OK");
-      echo json_encode( $sql->fetchAll()  );
+      if($sql->rowCount() != 0){
+        echo json_encode( $sql->fetchAll() );
+      }else{
+        echo json_encode(false);
+      }
       exit();
     }else{
       //Mostrar todos los usuarios

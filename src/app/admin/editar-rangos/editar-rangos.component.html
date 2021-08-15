@@ -1,0 +1,22 @@
+<div class="row">
+    <h1>Editar Rango</h1>
+</div>
+<div class="row">
+    <div class="col s6">
+        <mat-form-field appearance="standard">
+            <mat-label>Rango</mat-label>
+            <mat-select [(ngModel)]="selectedValue" name="rango">
+              <mat-option *ngFor="let rango of rangos" [value]="rango">
+                {{rango.rango.toUpperCase()}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <button mat-button class="col s12 waves-effect waves-light btn red darken-4" (click)="editarRango()">Guardar</button>
+    </div>
+</div>
+
+

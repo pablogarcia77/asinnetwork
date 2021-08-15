@@ -1,9 +1,12 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { forkJoin } from 'rxjs';
 import { Ganancia } from 'src/app/models/ganancia';
+import { Rango } from 'src/app/models/rango';
 import { Usuario } from 'src/app/models/usuario';
 import { GananciasService } from 'src/app/services/ganancias.service';
+import { RangosService } from 'src/app/services/rangos.service';
 
 @Component({
   selector: 'app-editar-ganancias',
@@ -30,13 +33,16 @@ export class EditarGananciasComponent implements OnInit {
   ngOnInit(): void {
     this.usuario = this.data.usuario
     // console.log(this.usuario)
+    
   }
 
   editarGanancias(){
     // console.log(this.ganancia)
+
+    // console.log(this.selectedValue)
+
     this.gananciasService.postGanancia(this.usuario.id,this.ganancia).subscribe(
       response => {
-        // console.log(response)
         this.snackbar.open(
           'Datos guardados','Aceptar',
           {
@@ -48,6 +54,26 @@ export class EditarGananciasComponent implements OnInit {
         }, 1500);
       }
     )
+
+    // this.rangosService.postGanancia(this.data.usuario.id,this.selectedValue.id).subscribe(
+    //   response => {
+    //     console.log(response)
+    //   }
+    // )
+    // this.gananciasService.postGanancia(this.usuario.id,this.ganancia).subscribe(
+    //   response => {
+    //     // console.log(response)
+    //     this.snackbar.open(
+    //       'Datos guardados','Aceptar',
+    //       {
+    //         duration: 1500
+    //       }
+    //     )
+    //     setTimeout(() => {
+    //       this.dialog.closeAll();
+    //     }, 1500);
+    //   }
+    // )
   }
 
 }

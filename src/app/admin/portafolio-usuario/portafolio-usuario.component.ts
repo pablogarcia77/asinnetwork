@@ -53,6 +53,7 @@ export class PortafolioUsuarioComponent implements OnInit {
     this.numeros = [1,2,3];
     this.usuario = new Usuario();
     this.usuario = data.usuario;
+    this.arbol = new Arbol();
   }
 
   ngOnInit(): void {
@@ -66,12 +67,12 @@ export class PortafolioUsuarioComponent implements OnInit {
     this.portafolioService.getPortafoliosArbol(this.usuario).subscribe(
       resp => {
         // console.log(resp);
-        this.semana1 = (resp[0].s1) ? resp[0].s1 : null
-        this.semana2 = (resp[0].s2) ? resp[0].s2 : null
-        this.semana3 = (resp[0].s3) ? resp[0].s3 : null
-        this.selectedValue1 = (resp[0].p1) ? resp[0].p1 : null
-        this.selectedValue2 = (resp[0].p2) ? resp[0].p2 : null
-        this.selectedValue3 = (resp[0].p3) ? resp[0].p3 : null
+        this.semana1 = (resp) ? resp[0].s1 : null
+        this.semana2 = (resp) ? resp[0].s2 : null
+        this.semana3 = (resp) ? resp[0].s3 : null
+        this.selectedValue1 = (resp) ? resp[0].p1 : null
+        this.selectedValue2 = (resp) ? resp[0].p2 : null
+        this.selectedValue3 = (resp) ? resp[0].p3 : null
       }
     )
 
@@ -105,6 +106,8 @@ export class PortafolioUsuarioComponent implements OnInit {
   }
 
   actualizarArbol(){
+    // console.log(this.arbol)
+    // console.log(this.p1)
     if(this.p1){
       this.arbol.p1 = this.p1.id;
       this.arbol.fecha_p1 = this.f1;
@@ -130,7 +133,8 @@ export class PortafolioUsuarioComponent implements OnInit {
       this.arbol.puntos_p3 = this.p3.puntos;
     }
     this.arbolService.putArbol(this.arbol).subscribe(
-      () => {
+      (response) => {
+        console.log(response)
         this.actualizado = true;
         this.snackBar.open(
           'Datos guardados','Aceptar',

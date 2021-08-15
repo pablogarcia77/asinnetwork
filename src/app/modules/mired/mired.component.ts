@@ -15,6 +15,7 @@ import { PortafolioService } from 'src/app/services/portafolio.service';
 import { EditarGananciasComponent } from 'src/app/admin/editar-ganancias/editar-ganancias.component';
 import { GananciasService } from 'src/app/services/ganancias.service';
 import { Ganancia } from 'src/app/models/ganancia';
+import { RangosService } from 'src/app/services/rangos.service';
 
 @Component({
   selector: 'app-mired',
@@ -37,6 +38,8 @@ export class MiredComponent implements OnInit {
   derecha!: number;
   puntosIzquierda: number = 0;
   puntosDerecha: number = 0;
+
+  rango!: string;
 
   nodos!: Node[];
   links!: Edge[];
@@ -65,6 +68,7 @@ export class MiredComponent implements OnInit {
     private userService: UsuariosService,
     private portafolioService: PortafolioService,
     private gananciasService: GananciasService,
+    private rangosService: RangosService,
     @Optional()@Inject(MAT_DIALOG_DATA)
     public data: {usuario: Usuario,posicion: string},
     public dialog: MatDialog
@@ -113,6 +117,13 @@ export class MiredComponent implements OnInit {
       response => {
         console.log(response[0])
         this.ganancias = response[0]
+      }
+    )
+
+    this.rangosService.getRangoUsuario(this.usuario.id).subscribe(
+      response => {
+        this.rango = response[0].rango
+        console.log(this.rango)
       }
     )
   }

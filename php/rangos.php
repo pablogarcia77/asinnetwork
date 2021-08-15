@@ -17,10 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
   listar todos los usuarios
  */
 if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-  if (isset($_GET['usuario'])){
+  if (!isset($_GET['id'])){
     //Mostrar todos los usuarios
-    $sql = $dbConn->prepare("SELECT * FROM arbol WHERE patrocinado=:usuario");
-    $sql->bindValue(':usuario', $_GET['usuario']);
+    $sql = $dbConn->prepare("SELECT * FROM rango");
     $sql->execute();
     $sql->setFetchMode(PDO::FETCH_ASSOC);
     header("HTTP/1.1 200 OK");
@@ -28,8 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
     exit();
   }else {
     //Mostrar un usuario especifico
-    // $sql = $dbConn->prepare("SELECT u.id,u.username,a.posicion,a.patrocinador,a.p1,a.p2,a.p3,a.fecha_p1,a.fecha_p2,a.fecha_p3,a.s1,a.s2,a.s3,a.id as idArbol FROM usuario u, arbol a WHERE a.patrocinado=u.id AND a.patrocinador=:id ORDER BY a.posicion DESC");
-    $sql = $dbConn->prepare("SELECT u.id,u.username,a.posicion,a.patrocinador,a.p1,a.p2,a.p3,a.fecha_p1,a.fecha_p2,a.fecha_p3,a.s1,a.s2,a.s3,a.precio_p1,a.precio_p2,a.precio_p3,a.porcentaje_p1,a.porcentaje_p2,a.porcentaje_p3,a.puntos_p1,a.puntos_p2,a.puntos_p3,a.id as idArbol FROM usuario u, arbol a WHERE a.patrocinado=u.id AND a.patrocinador=:id ORDER BY a.posicion DESC");
+    $sql = $dbConn->prepare("SELECT r.rango FROM usuario_rango ur, rango r WHERE ur.id_rango=r.id AND ur.id_usuario=:id ORDER BY ur.id DESC LIMIT 1");
     $sql->bindValue(':id', $_GET['id']);
     $sql->execute();
     $sql->setFetchMode(PDO::FETCH_ASSOC);
@@ -42,18 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 // Crear un nuevo pedido
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $input = $_POST;
-    $sql = "INSERT INTO arbol
-            (patrocinador,patrocinado,posicion)
-            VALUES
-            (:patrocinador,:patrocinado,:posicion)";
-
+    $sql = "INSERT INTO usuario_rango
+          (id_usuario,id_rango)
+          VALUES
+          (:id_usuario,:id_rango)";
     $statement = $dbConn->prepare($sql);
     bindAllValues($statement, $input);
     $statement->execute();
-    $arbolId = $dbConn->lastInsertId();
-    if($arbolId)
+    $userId = $dbConn->lastInsertId();
+    if($userId)
     {
-      $input['id'] = $arbolId;
+      $input['id'] = $userId;
       header("HTTP/1.1 200 OK");
       echo json_encode($input);
       exit();
@@ -76,17 +73,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT'){
     $_PUT = file_get_contents('php://input');
     $array = json_decode($_PUT,true);
     $fields = getParams($array);
-    $sql = "UPDATE arbol SET $fields WHERE id=:id";
+    $sql = "UPDATE usuarios SET $fields WHERE id_usuario=:id_usuario";
     $statement = $dbConn->prepare($sql);
     bindAllValues($statement,$array);
-    $result = $statement->execute();
-    if($result){
-      header("HTTP/1.1 200 OK");
-      echo json_encode(true);
-    }else{
-      header("HTTP/1.1 200 ERROR");
-      echo json_encode(false);
-    }
+    $statement->execute();
+    header("HTTP/1.1 200 OK");
     exit();
 }
 

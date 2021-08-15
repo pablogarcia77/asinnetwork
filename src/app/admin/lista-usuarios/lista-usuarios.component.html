@@ -53,6 +53,7 @@
                   <td mat-cell *matCellDef="let element">
                     <mat-icon aria-hidden="true" aria-label="Ver" class="edit" (click)="verUsuario(element)">remove_red_eye</mat-icon>
                     <mat-icon aria-hidden="true" aria-label="Ver Red" class="edit" (click)="verDocumento(element)">portrait</mat-icon>
+                    <mat-icon aria-hidden="true" aria-label="Rango" class="edit" (click)="verRango(element)">star</mat-icon>
                     <mat-icon aria-hidden="true" aria-label="Portafolio" class="edit" (click)="agregarPortafolioUsuario(element)">business_center</mat-icon>
                     <mat-icon aria-hidden="true" aria-label="Ver Red" class="edit" (click)="verRed(element)">schema</mat-icon>
                     <mat-icon aria-hidden="true" aria-label="Editar" class="edit" (click)="editarUsuario(element)">edit</mat-icon>
@@ -61,6 +62,7 @@
                       <span *ngIf="element.estado == 1">lock_open</span>
                     </mat-icon>
                     <mat-icon aria-hidden="true" aria-label="Eliminar" class="edit" (click)="deleteUser(eliminar,element)">delete</mat-icon>
+                    <!-- <mat-icon aria-hidden="true" aria-label="Fix" class="edit" (click)="fixUserT(fix,element)">delete</mat-icon> -->
                   </td>
                 </ng-container>
               
@@ -84,6 +86,18 @@
     <div class="row">
       <button mat-button matDialogClose class="waves-effect waves-light btn grey darken-4">Cancelar</button>
       <button mat-button matDialogClose class="waves-effect waves-light btn red darken-4" (click)="deleteUsuario()">Aceptar</button>
+    </div>
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #fix>
+  <mat-dialog-content>
+    <p>¿Seguro que reestablecer valores de protafolios?</p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <div class="row">
+      <button mat-button matDialogClose class="waves-effect waves-light btn grey darken-4">Cancelar</button>
+      <button mat-button matDialogClose class="waves-effect waves-light btn red darken-4" (click)="fixUser()">Aceptar</button>
     </div>
   </mat-dialog-actions>
 </ng-template>

@@ -21,7 +21,7 @@
                     <fa-icon [icon]="faKey" size="1x"></fa-icon>
                 </mat-icon>
                 <mat-label>Password</mat-label>
-                <input matInput type="password" [(ngModel)]="usuario.password" (click)="borrar()" (blur)="volver()">
+                <input matInput type="text" [(ngModel)]="usuario.password">
             </mat-form-field>
         </div>
         <div class="input-field col s3">

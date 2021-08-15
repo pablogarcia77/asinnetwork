@@ -10,6 +10,7 @@ import { ModalUsuarioComponent } from 'src/app/modules/modal-usuario/modal-usuar
 import { PerfilComponent } from 'src/app/modules/perfil/perfil.component';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { DocumentoUsuarioComponent } from '../documento-usuario/documento-usuario.component';
+import { EditarRangosComponent } from '../editar-rangos/editar-rangos.component';
 import { EditarUsuarioComponent } from '../editar-usuario/editar-usuario.component';
 import { PortafolioUsuarioComponent } from '../portafolio-usuario/portafolio-usuario.component';
 
@@ -45,7 +46,7 @@ export class ListaUsuariosComponent implements OnInit {
   cargarTabla(){
     this.usuariosService.getUsuarios().subscribe(
       response => {
-        console.log(response);
+        // console.log(response);
         this.dataSource = new MatTableDataSource(response);
         this.dataSource.sort = this.sort
         this.dataSource.paginator = this.paginator
@@ -151,6 +152,26 @@ export class ListaUsuariosComponent implements OnInit {
         width: '100%'
       }
     )
+  }
+
+  verRango(usuario: Usuario){
+    this.dialog.open(
+      EditarRangosComponent,
+      {
+        data: {
+          usuario: usuario
+        },
+        width: '100%'
+      }
+    )
+  }
+
+  fixUserT(template: TemplateRef<any>,usuario: Usuario){
+    this.dialog.open(template)
+  }
+
+  fixUser(){
+    console.log('si')
   }
 
 }

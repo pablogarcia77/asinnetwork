@@ -51,6 +51,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { EditarGananciasComponent } from './admin/editar-ganancias/editar-ganancias.component';
 import { DocumentoUsuarioComponent } from './admin/documento-usuario/documento-usuario.component';
+import { EditarRangosComponent } from './admin/editar-rangos/editar-rangos.component';
 
 
 
@@ -84,6 +85,7 @@ import { DocumentoUsuarioComponent } from './admin/documento-usuario/documento-u
     EditarUsuarioComponent,
     EditarGananciasComponent,
     DocumentoUsuarioComponent,
+    EditarRangosComponent,
   ],
   imports: [
     BrowserModule,
