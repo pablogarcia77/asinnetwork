@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
     
     if(isset($_GET['usuario'])){
       //Mostrar portafolios de un usuario especifico
-      $sql = $dbConn->prepare("SELECT p1,p2,p3,s1,s2,s3 FROM arbol WHERE patrocinado=:id");
+      $sql = $dbConn->prepare("SELECT p1,p2,p3,p4,s1,s2,s3,s4,fecha_p1,fecha_p2,fecha_p3,fecha_p4 FROM arbol WHERE patrocinado=:id");
       $sql->bindValue(':id', $_GET['usuario']);
       $sql->execute();
       $sql->setFetchMode(PDO::FETCH_ASSOC);
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
     }
   }else {
     //Mostrar un usuario especifico
-    $sql = $dbConn->prepare("SELECT u1.username AS patrocinador, u2.username AS patrocinado, a.posicion, a.p1,a.p2,a.p3,a.fecha_p1,a.fecha_p2,a.fecha_p3,a.s1,a.s2,a.s3
+    $sql = $dbConn->prepare("SELECT u1.username AS patrocinador, u2.username AS patrocinado, a.posicion, a.p1,a.p2,a.p3,a.p4,a.fecha_p1,a.fecha_p2,a.fecha_p3,a.fecha_p4,a.s1,a.s2,a.s3,a.s4
     FROM usuario u1, usuario u2, arbol a
     WHERE u1.id=a.patrocinador AND u2.id=a.patrocinado AND a.patrocinado=:id");
     $sql->bindValue(':id', $_GET['id']);

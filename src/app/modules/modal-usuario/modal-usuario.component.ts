@@ -31,7 +31,7 @@ export class ModalUsuarioComponent implements OnInit {
   ngOnInit(): void {
     this.portafoliosService.getPortafoliosUsuario(this.usuario.id).subscribe(
       response => {
-        for(let y=1;y<=3;y++){
+        for(let y=1;y<=4;y++){
           if(response[0]["p"+y]){
             let portafolio = new Portafolio();
             this.portafoliosService.getPortafolio(response[0]["p"+y]).subscribe(
