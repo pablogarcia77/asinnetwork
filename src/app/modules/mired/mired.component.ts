@@ -115,7 +115,7 @@ export class MiredComponent implements OnInit {
 
     this.gananciasService.getGananciaUsuario(this.usuario.id).subscribe(
       response => {
-        console.log(response[0])
+        // console.log(response[0])
         this.ganancias = response[0]
       }
     )
@@ -123,7 +123,7 @@ export class MiredComponent implements OnInit {
     this.rangosService.getRangoUsuario(this.usuario.id).subscribe(
       response => {
         this.rango = response[0].rango
-        console.log(this.rango)
+        // console.log(this.rango)
       }
     )
   }
@@ -156,12 +156,12 @@ export class MiredComponent implements OnInit {
         let time3 = hoy.getTime() - f3.getTime()
 
         // this.weeks = Math.trunc(time/(1000 * 3600 * 24 * 7)) * response[0].puntos_p1;
-        this.generado_p1 = Math.trunc(time1/(1000 * 3600 * 24 * 7)) * response[0].puntos_p1
-        this.generado_p2 = Math.trunc(time2/(1000 * 3600 * 24 * 7)) * response[0].puntos_p2
-        this.generado_p3 = Math.trunc(time3/(1000 * 3600 * 24 * 7)) * response[0].puntos_p3
+        this.generado_p1 = Math.trunc(time1/(1000 * 3600 * 24 * 7)) * response[0].precio_p1*response[0].porcentaje_p1/100
+        this.generado_p2 = Math.trunc(time2/(1000 * 3600 * 24 * 7)) * response[0].precio_p2*response[0].porcentaje_p2/100
+        this.generado_p3 = Math.trunc(time3/(1000 * 3600 * 24 * 7)) * response[0].precio_p3*response[0].porcentaje_p3/100
 
 
-        console.log(this.arbol)
+        // console.log(this.arbol)
         
           nodex.portafolio = new Array<Porta>();
           // Seteo Portafolios de la raiz
