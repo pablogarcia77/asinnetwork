@@ -52,6 +52,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { EditarGananciasComponent } from './admin/editar-ganancias/editar-ganancias.component';
 import { DocumentoUsuarioComponent } from './admin/documento-usuario/documento-usuario.component';
 import { EditarRangosComponent } from './admin/editar-rangos/editar-rangos.component';
+import { NuevoPortafolioComponent } from './admin/nuevo-portafolio/nuevo-portafolio.component';
 
 
 
@@ -86,6 +87,7 @@ import { EditarRangosComponent } from './admin/editar-rangos/editar-rangos.compo
     EditarGananciasComponent,
     DocumentoUsuarioComponent,
     EditarRangosComponent,
+    NuevoPortafolioComponent,
   ],
   imports: [
     BrowserModule,

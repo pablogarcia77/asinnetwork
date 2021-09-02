@@ -40,10 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 // Crear un nuevo pedido
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $input = $_POST;
-    $sql = "INSERT INTO usuario
-          (username,password,apellido,nombre,documento,email,telefono,domicilio,posicion,banco,numero_cuenta)
+    $sql = "INSERT INTO portafolio
+          (tipo,precio,puntos,porcentaje)
           VALUES
-          (:username,:password,:apellido,:nombre,:documento,:email,:telefono,:domicilio,:posicion,:banco,:numero_cuenta)";
+          (:tipo,:precio,:puntos,:porcentaje)";
     $statement = $dbConn->prepare($sql);
     bindAllValues($statement, $input);
     $statement->execute();
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     {
       $input['id'] = $userId;
       header("HTTP/1.1 200 OK");
-      echo json_encode($input);
+      echo json_encode(true);
       exit();
 	 }
 }
@@ -73,11 +73,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT'){
     $_PUT = file_get_contents('php://input');
     $array = json_decode($_PUT,true);
     $fields = getParams($array);
-    $sql = "UPDATE usuarios SET $fields WHERE id_usuario=:id_usuario";
+    $sql = "UPDATE portafolio SET $fields WHERE id=:id";
     $statement = $dbConn->prepare($sql);
     bindAllValues($statement,$array);
-    $statement->execute();
     header("HTTP/1.1 200 OK");
+    try{
+      $statement->execute();
+      echo json_encode(true);
+    }catch(PDOException $e){
+      $e->getMessage();
+      echo json_encode(false);
+    }
     exit();
 }
 

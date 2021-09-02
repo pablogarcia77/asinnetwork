@@ -1,0 +1,12 @@
+.pt-50{
+    padding-top: 50px;
+}
+.mb-0{
+    margin-bottom: 0;
+}
+input::placeholder, mat-label{
+    color: white;
+}
+::ng-deep .mat-select-value {
+    color: white !important;
+}

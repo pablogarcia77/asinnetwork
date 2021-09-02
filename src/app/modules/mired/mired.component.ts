@@ -141,6 +141,7 @@ export class MiredComponent implements OnInit {
 
     this.arbolService.getMiArbol(this.user).subscribe(
       response => {
+        console.log(response)
         this.arbol = response[0]
         let f1 = new Date(response[0].fecha_p1)
         let f2 = new Date(response[0].fecha_p2)

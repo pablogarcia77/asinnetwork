@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Portafolio } from '../models/portafolio';
 import { Usuario } from '../models/usuario';
 
 // Encabezados HTTP
@@ -50,5 +51,19 @@ export class PortafolioService {
 
   getPortafoliosArbol(usuario: Usuario):Observable<any>{
     return this.http.get(this.urlAP + '?usuario=' + usuario.id);
+  }
+
+  updatePortafolio(portafolio: Portafolio):Observable<any>{
+    return this.http.put(this.urlBase,portafolio)
+  }
+
+  postPortafolio(portafolio: Portafolio):Observable<any>{
+    const fd = new FormData()
+    fd.append('tipo',portafolio.tipo)
+    fd.append('precio',portafolio.precio.toString())
+    fd.append('puntos',portafolio.puntos.toString())
+    fd.append('porcentaje',portafolio.porcentaje.toString())
+
+    return this.http.post(this.urlBase,fd)
   }
 }
