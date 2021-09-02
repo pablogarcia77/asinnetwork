@@ -39,6 +39,8 @@ export class MiredComponent implements OnInit {
   puntosIzquierda: number = 0;
   puntosDerecha: number = 0;
 
+  gananciaCalculada: number=0;
+
   rango!: string;
 
   nodos!: Node[];
@@ -115,8 +117,8 @@ export class MiredComponent implements OnInit {
 
     this.gananciasService.getGananciaUsuario(this.usuario.id).subscribe(
       response => {
-        // console.log(response[0])
         this.ganancias = response[0]
+        // console.log(this.ganancias)
       }
     )
 
@@ -141,7 +143,7 @@ export class MiredComponent implements OnInit {
 
     this.arbolService.getMiArbol(this.user).subscribe(
       response => {
-        console.log(response)
+        // console.log(response)
         this.arbol = response[0]
         let f1 = new Date(response[0].fecha_p1)
         let f2 = new Date(response[0].fecha_p2)
@@ -160,6 +162,7 @@ export class MiredComponent implements OnInit {
         this.generado_p2 = Math.trunc(time2/(1000 * 3600 * 24 * 7)) * response[0].precio_p2*response[0].porcentaje_p2/100
         this.generado_p3 = Math.trunc(time3/(1000 * 3600 * 24 * 7)) * response[0].precio_p3*response[0].porcentaje_p3/100
 
+        this.gananciaCalculada = this.generado_p1*1 + this.generado_p2*1 + this.generado_p3
 
         // console.log(this.arbol)
         
