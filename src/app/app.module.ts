@@ -53,6 +53,7 @@ import { EditarGananciasComponent } from './admin/editar-ganancias/editar-gananc
 import { DocumentoUsuarioComponent } from './admin/documento-usuario/documento-usuario.component';
 import { EditarRangosComponent } from './admin/editar-rangos/editar-rangos.component';
 import { NuevoPortafolioComponent } from './admin/nuevo-portafolio/nuevo-portafolio.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 
@@ -116,7 +117,7 @@ import { NuevoPortafolioComponent } from './admin/nuevo-portafolio/nuevo-portafo
     MatNativeDateModule,
     MatProgressBarModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
