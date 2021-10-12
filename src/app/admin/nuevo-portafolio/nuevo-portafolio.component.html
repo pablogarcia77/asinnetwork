@@ -45,6 +45,13 @@
             </div>
         </div>
     </div>
+    <div class="row col s12">
+        <button type="button" class="col s12 waves-effect waves-light btn red darken-4" (click)="imagenPortafolio.click()">Subir Imagen</button>
+        <mat-progress-bar color="primary"
+            mode="determinate"
+            [value]="progress"></mat-progress-bar>
+        <input hidden type="file" #imagenPortafolio mat-raised-button accept="image/*" (change)="readThis($event)">
+    </div>
     <div class="row">
         <button type="button" class="col s12 waves-effect waves-light btn red darken-4" (click)="crearPortafolio()">Aceptar</button>
     </div>

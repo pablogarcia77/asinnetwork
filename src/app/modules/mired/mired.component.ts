@@ -39,6 +39,8 @@ export class MiredComponent implements OnInit {
   puntosIzquierda: number = 0;
   puntosDerecha: number = 0;
 
+  public patrocinador: Usuario;
+
   gananciaCalculada: number=0;
 
   rango!: string;
@@ -64,6 +66,10 @@ export class MiredComponent implements OnInit {
   public generado_p3!: any;
 
   public ganancias!: Ganancia;
+
+
+  panelOpenState = false;
+
 
   constructor(
     private arbolService: ArbolService,
@@ -93,6 +99,8 @@ export class MiredComponent implements OnInit {
 
     this.ganancias = new Ganancia();
 
+    this.patrocinador = new Usuario();
+
   }
 
   ngOnInit(): void {
@@ -117,9 +125,9 @@ export class MiredComponent implements OnInit {
 
     this.gananciasService.getGananciaUsuario(this.usuario.id).subscribe(
       response => {
-        console.log(response)
+        // console.log(response)
         this.ganancias = response[0]
-        console.log(this.ganancias)
+        // console.log(this.ganancias)
       }
     )
 
@@ -144,7 +152,13 @@ export class MiredComponent implements OnInit {
 
     this.arbolService.getMiArbol(this.user).subscribe(
       response => {
-        console.log(response)
+        // console.log(response)
+        this.userService.getUsuario(response[0].patrocinador).subscribe(
+          response => {
+            // console.log(response)
+            this.patrocinador = response[0]
+          }
+        )
         this.arbol = response[0]
         let f1 = new Date(response[0].fecha_p1)
         let f2 = new Date(response[0].fecha_p2)
@@ -159,11 +173,11 @@ export class MiredComponent implements OnInit {
         let time3 = hoy.getTime() - f3.getTime()
 
         // this.weeks = Math.trunc(time/(1000 * 3600 * 24 * 7)) * response[0].puntos_p1;
-        this.generado_p1 = Math.trunc(time1/(1000 * 3600 * 24 * 7)) * response[0].puntos_p1
-        this.generado_p2 = Math.trunc(time2/(1000 * 3600 * 24 * 7)) * response[0].puntos_p2
-        this.generado_p3 = Math.trunc(time3/(1000 * 3600 * 24 * 7)) * response[0].puntos_p3
+        this.generado_p1 = Math.trunc(time1/(1000 * 3600 * 24 * 7)) * response[0].precio_p1*response[0].porcentaje_p1/100
+        this.generado_p2 = Math.trunc(time2/(1000 * 3600 * 24 * 7)) * response[0].precio_p2*response[0].porcentaje_p2/100
+        this.generado_p3 = Math.trunc(time3/(1000 * 3600 * 24 * 7)) * response[0].precio_p3*response[0].porcentaje_p3/100
 
-        console.log( Math.trunc(time1/(1000 * 3600 * 24 * 7)) * response[0].precio_p1)
+        // console.log( Math.trunc(time1/(1000 * 3600 * 24 * 7)) * response[0].precio_p1)
         this.gananciaCalculada = this.generado_p1*1 + this.generado_p2*1 + this.generado_p3
 
         // console.log(this.arbol)
@@ -452,15 +466,16 @@ export class MiredComponent implements OnInit {
     )
   }
 
-  editarGanancias(){
-     this.dialog.open(
-       EditarGananciasComponent,
-       {
-         width: '60%',
-         data: {
-           usuario: this.data.usuario
-         }
-       }
-     )
-  }
+  // editarGanancias(){
+  //    this.dialog.open(
+  //      EditarGananciasComponent,
+  //      {
+  //        width: '50%',
+  //        height: '40%',
+  //        data: {
+  //          usuario: this.data.usuario
+  //        }
+  //      }
+  //    )
+  // }
 }

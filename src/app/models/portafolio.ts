@@ -4,6 +4,8 @@ export class Portafolio{
     precio!: number;
     puntos!: number;
     porcentaje!: number;
+    encodedImage!: string;
+    
     constructor(
         
     ){}

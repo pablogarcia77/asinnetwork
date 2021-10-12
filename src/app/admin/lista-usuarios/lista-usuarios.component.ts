@@ -126,6 +126,7 @@ export class ListaUsuariosComponent implements OnInit {
     this.usuariosService.deleteUsuario(this.usuarioEliminar).subscribe(
       response => {
         console.log(response)
+        this.cargarTabla()
       }
     )
   }

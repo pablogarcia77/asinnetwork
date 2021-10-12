@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { faKey, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Usuario } from 'src/app/models/usuario';
@@ -19,11 +20,13 @@ export class LoginComponent implements OnInit {
 
   public usuario: Usuario;
   public error: boolean;
+  public mensajeError: string;
 
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ){
     this.usuario = new Usuario();
     this.error = false;
@@ -38,14 +41,16 @@ export class LoginComponent implements OnInit {
     // console.log(this.usuario.password);
     this.loginService.getUsuario(this.usuario).subscribe(
       response => {
-        if(response){
-          this.usuario = response[0];
+        if(response.ok == false){
+          this.error = true
+          this.mensajeError = response.mensaje
+          // console.log('hay error')
+        }else{
+          this.usuario = response;
           // console.log(this.usuario)
           localStorage.setItem('currentUser',JSON.stringify(this.usuario));
-            this.router.navigate(['panel']);
+          this.router.navigate(['panel']);
           this.dialog.closeAll();
-        }else{
-          this.error = true;
         }
       }
     )

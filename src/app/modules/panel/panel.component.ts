@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { faAddressBook, faBriefcase, faCoffee, faIdCard, faKey, faProjectDiagram, faSignOutAlt, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { MatDialog } from '@angular/material/dialog';
+import { faAddressBook, faBriefcase, faCoffee, faFileSignature, faIdCard, faKey, faProjectDiagram, faSignOutAlt, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { Usuario } from 'src/app/models/usuario';
+import { TosComponent } from '../tos/tos.component';
 
 @Component({
   selector: 'app-panel',
@@ -13,6 +15,7 @@ export class PanelComponent implements OnInit {
   faUser = faUser;
   faKey = faKey;
   faIdCard = faIdCard;
+  faFileSignature = faFileSignature;
   faProjectDiagram = faProjectDiagram;
   faBriefCase = faBriefcase;
   faCoffe = faCoffee;
@@ -24,6 +27,7 @@ export class PanelComponent implements OnInit {
   public usuario: Usuario;
   
   constructor(
+    private dialog: MatDialog
   ) {
     this.usuario = new Usuario();
   }
@@ -41,5 +45,13 @@ export class PanelComponent implements OnInit {
 
   logOut(){
     localStorage.setItem('currentUser','');
+  }
+
+  openTOS(){
+    this.dialog.open(
+      TosComponent,{
+        width: '100%'
+      }
+    )
   }
 }

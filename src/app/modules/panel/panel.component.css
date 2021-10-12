@@ -152,3 +152,6 @@
     color: white;
     text-align: center;
 }
+.cursor{
+    cursor: pointer !important;
+}

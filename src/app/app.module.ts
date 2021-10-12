@@ -54,6 +54,8 @@ import { DocumentoUsuarioComponent } from './admin/documento-usuario/documento-u
 import { EditarRangosComponent } from './admin/editar-rangos/editar-rangos.component';
 import { NuevoPortafolioComponent } from './admin/nuevo-portafolio/nuevo-portafolio.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { TosComponent } from './modules/tos/tos.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 
@@ -89,6 +91,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     DocumentoUsuarioComponent,
     EditarRangosComponent,
     NuevoPortafolioComponent,
+    TosComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,7 +118,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatExpansionModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

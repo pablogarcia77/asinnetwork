@@ -1,7 +1,9 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Usuario } from 'src/app/models/usuario';
 import { GananciasService } from 'src/app/services/ganancias.service';
+import { TosComponent } from '../tos/tos.component';
 
 @Component({
   selector: 'app-misganancias',
@@ -15,7 +17,7 @@ export class MisgananciasComponent implements OnInit {
   public ganancia: number;
 
   constructor(
-    private gananciasService: GananciasService
+    private gananciasService: GananciasService,
   ) { }
 
   ngOnInit(): void {
@@ -29,5 +31,4 @@ export class MisgananciasComponent implements OnInit {
       }
     )
   }
-
 }

@@ -1,14 +1,11 @@
 <div class="row">
-    <h1>Ganancias</h1>
-</div>
-<div class="row">
-    <div class="col s6">
+    <div class="col s3">
         <mat-form-field appearance="standard">
             <mat-label>Venta Directa:</mat-label>
             <input matInput type="text" [(ngModel)]="ganancia.venta_directa">
         </mat-form-field>
     </div>
-    <div class="col s6">
+    <div class="col s3">
         <mat-form-field appearance="standard">
             <mat-label>Comisión</mat-label>
             <input matInput [matDatepicker]="picker" [(ngModel)]="ganancia.fecha_cobro">
@@ -16,15 +13,13 @@
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
     </div>
-</div>
-<div class="row">
-    <div class="col s6">
+    <div class="col s3">
         <mat-form-field appearance="standard">
             <mat-label>Primera Linea:</mat-label>
             <input matInput type="text" [(ngModel)]="ganancia.primera_linea">
         </mat-form-field>
     </div>
-    <div class="col s6">
+    <div class="col s3">
         <mat-form-field appearance="standard">
             <mat-label>Segunda Linea:</mat-label>
             <input matInput type="text" [(ngModel)]="ganancia.segunda_linea">
@@ -32,27 +27,25 @@
     </div>
 </div>
 <div class="row">
-    <div class="col s6">
+    <div class="col s3">
         <mat-form-field appearance="standard">
             <mat-label>Tercera Linea:</mat-label>
             <input matInput type="text" [(ngModel)]="ganancia.tercera_linea">
         </mat-form-field>
     </div>
-    <div class="col s6">
+    <div class="col s3">
         <mat-form-field appearance="standard">
             <mat-label>Cuarta Linea:</mat-label>
             <input matInput type="text" [(ngModel)]="ganancia.cuarta_linea">
         </mat-form-field>
     </div>
-</div>
-<div class="row">
-    <div class="col s6">
+    <div class="col s3">
         <mat-form-field appearance="standard">
             <mat-label>Binario:</mat-label>
             <input matInput type="text" [(ngModel)]="ganancia.binario">
         </mat-form-field>
     </div>
-    <div class="col s6">
+    <div class="col s3">
         <mat-form-field appearance="standard">
             <mat-label>Total a Cobrar:</mat-label>
             <input matInput type="text" [(ngModel)]="ganancia.total">
@@ -60,21 +53,19 @@
     </div>
 </div>
 <div class="row">
-    <div class="col s6">
+    <div class="col s3">
         <mat-form-field appearance="standard">
             <mat-label>Puntos a izquierda:</mat-label>
             <input matInput type="text" [(ngModel)]="ganancia.puntos_izquierda">
         </mat-form-field>
     </div>
-    <div class="col s6">
+    <div class="col s3">
         <mat-form-field appearance="standard">
             <mat-label>Puntos a derecha:</mat-label>
             <input matInput type="text" [(ngModel)]="ganancia.puntos_derecha">
         </mat-form-field>
     </div>
-</div>
-<div class="row">
-    <div class="col s6">
+    <div class="col s3">
         <mat-form-field appearance="standard">
             <mat-label>Ganancia Semanal:</mat-label>
             <input matInput type="text" [(ngModel)]="ganancia.semanal">

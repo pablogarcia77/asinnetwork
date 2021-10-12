@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { RegistroComponent } from '../registro/registro.component';
+import { TosComponent } from '../tos/tos.component';
 
 @Component({
   selector: 'app-menu',
@@ -27,6 +28,15 @@ export class MenuComponent implements OnInit {
         }
       }
     );
+  }
+
+  openSIM(){
+    this.dialog.open(
+      TosComponent,
+      {
+        width: '100%'
+      }
+    )
   }
 
   openLogin() {

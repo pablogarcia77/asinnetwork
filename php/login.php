@@ -45,10 +45,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     if($num){
       $sql->setFetchMode(PDO::FETCH_ASSOC);
       header("HTTP/1.1 200 OK");
-      echo json_encode($sql->fetchAll());
+      $usuario = $sql->fetch();
+      $estado['estado'] = ($estado['estado'] != 0) ? true : false;
+      if($usuario['estado'] != 0){
+        echo json_encode($usuario);
+      }else{
+        $error['ok'] = false;
+        $error['mensaje'] = 'Cuenta inexistente';
+        echo json_encode($error);
+      }
       exit();
 	  }else{
       header("HTTP/1.1 200 OK");
+      $error['ok'] = false;
+      $error['mensaje'] = '!Error! Usuario o contraseña incorrecto';
+      echo json_encode($error);
       exit();
     }
 }

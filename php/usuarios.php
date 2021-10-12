@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 if ($_SERVER['REQUEST_METHOD'] == 'GET'){
   if (!isset($_GET['id'])){
     //Mostrar todos los usuarios
-    $sql = $dbConn->prepare("SELECT id,apellido,nombre,username,telefono,documento,banco,numero_cuenta,estado,email,domicilio,tipo,url_documento_frente,url_documento_dorso,registro,password FROM usuario");
+    $sql = $dbConn->prepare("SELECT id,apellido,nombre,username,telefono,documento,banco,numero_cuenta,estado,email,domicilio,tipo,url_documento_frente,url_documento_dorso,registro,password FROM usuario WHERE estado=1");
     $sql->execute();
     $sql->setFetchMode(PDO::FETCH_ASSOC);
     header("HTTP/1.1 200 OK");
@@ -60,23 +60,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 //Borrar
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
-  if (!isset($_GET['estado'])){
-    $id = $_GET['id'];
-    $statement = $dbConn->prepare("DELETE FROM usuario WHERE id=:id");
-    $statement->bindValue(':id', $id);
-    $statement->execute();
-    header("HTTP/1.1 200 OK");
-    exit();
-  }else{
-    $id = $_GET['id'];
-    $estado = $_GET['estado'];
-    $statement = $dbConn->prepare("UPDATE usuario SET estado=:estado WHERE id=:id");
-    $statement->bindValue(':id', $id);
-    $statement->bindValue(':estado', $estado);
-    $statement->execute();
-    header("HTTP/1.1 200 OK");
-    exit();
-  }
+  $id = $_GET['id'];
+  $statement = $dbConn->prepare("UPDATE usuario SET estado=0 WHERE id=:id");
+  $statement->bindValue(':id', $id);
+  // $statement->bindValue(':estado', $estado);
+  $statement->execute();
+  header("HTTP/1.1 200 OK");
+  echo json_encode(true);
+  exit();
 }
 
 //Actualizar

@@ -57,13 +57,13 @@ export class PortafolioService {
     return this.http.put(this.urlBase,portafolio)
   }
 
-  postPortafolio(portafolio: Portafolio):Observable<any>{
-    const fd = new FormData()
-    fd.append('tipo',portafolio.tipo)
-    fd.append('precio',portafolio.precio.toString())
-    fd.append('puntos',portafolio.puntos.toString())
-    fd.append('porcentaje',portafolio.porcentaje.toString())
+  deletePortafolio(portafolio: Portafolio):Observable<any>{
+    return this.http.delete(this.urlBase + '?id=' + portafolio.id)
+  }
 
-    return this.http.post(this.urlBase,fd)
+  postPortafolio(portafolio: Portafolio):Observable<any>{
+
+    return this.http.post(this.urlBase,portafolio,{reportProgress: true,
+      observe: 'events'});
   }
 }

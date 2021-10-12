@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { Component, Inject, Input, OnInit, Optional } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { forkJoin } from 'rxjs';
@@ -17,6 +17,8 @@ export class EditarGananciasComponent implements OnInit {
 
   public usuario: Usuario;
 
+  @Input() user: any;
+
   public ganancia!: Ganancia;
 
   constructor(
@@ -31,8 +33,9 @@ export class EditarGananciasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usuario = this.data.usuario
-    // console.log(this.usuario)
+    // this.usuario = this.data.usuario
+    this.usuario = this.user;
+    console.log(this.usuario)
     
   }
 

@@ -39,9 +39,6 @@ export class ImageService {
     return this.http.post<any[]>('https://asinnetwork.net/api/imagenes.php',newSession,{reportProgress: true,
     observe: 'events'});
   }
-
-  
-
   
   
 }
