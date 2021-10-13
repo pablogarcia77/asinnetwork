@@ -64,10 +64,15 @@ export class MiredComponent implements OnInit {
   public generado_p1!: any;
   public generado_p2!: any;
   public generado_p3!: any;
+  public generado_p4!: any;
 
   public ganancias!: Ganancia;
 
-
+  public time1!: number
+  public time2!: number
+  public time3!: number
+  public time4!: number
+  
   panelOpenState = false;
 
 
@@ -152,7 +157,7 @@ export class MiredComponent implements OnInit {
 
     this.arbolService.getMiArbol(this.user).subscribe(
       response => {
-        // console.log(response)
+        console.log(response)
         this.userService.getUsuario(response[0].patrocinador).subscribe(
           response => {
             // console.log(response)
@@ -160,22 +165,29 @@ export class MiredComponent implements OnInit {
           }
         )
         this.arbol = response[0]
-        let f1 = new Date(response[0].fecha_p1)
-        let f2 = new Date(response[0].fecha_p2)
-        let f3 = new Date(response[0].fecha_p3)
+        let f1 = (response[0].fecha_p1) ? new Date(response[0].fecha_p1) : undefined
+        let f2 = (response[0].fecha_p2) ? new Date(response[0].fecha_p2) : undefined
+        let f3 = (response[0].fecha_p3) ? new Date(response[0].fecha_p3) : undefined
+        let f4 = (response[0].fecha_p4) ? new Date(response[0].fecha_p4) : undefined
         let hoy = new Date()
 
-        // console.log(f1)
-        // console.log(f2)
+        
 
-        let time1 = hoy.getTime() - f1.getTime()
-        let time2 = hoy.getTime() - f2.getTime()
-        let time3 = hoy.getTime() - f3.getTime()
+        this.time1 = (f1 != undefined) ? Math.trunc((hoy.getTime() - f1.getTime())/(1000*3600*24*7)) : undefined
+        this.time2 = (f2 != undefined) ? Math.trunc((hoy.getTime() - f2.getTime())/(1000*3600*24*7)) : undefined
+        this.time3 = (f3 != undefined) ? Math.trunc((hoy.getTime() - f3.getTime())/(1000*3600*24*7)) : undefined
+        this.time4 = (f4 != undefined) ? Math.trunc((hoy.getTime() - f4.getTime())/(1000*3600*24*7)) : undefined
+
+        console.log(this.time1)
+        console.log(this.time2)
+        console.log(this.time3)
+        console.log(this.time4)
 
         // this.weeks = Math.trunc(time/(1000 * 3600 * 24 * 7)) * response[0].puntos_p1;
-        this.generado_p1 = Math.trunc(time1/(1000 * 3600 * 24 * 7)) * response[0].precio_p1*response[0].porcentaje_p1/100
-        this.generado_p2 = Math.trunc(time2/(1000 * 3600 * 24 * 7)) * response[0].precio_p2*response[0].porcentaje_p2/100
-        this.generado_p3 = Math.trunc(time3/(1000 * 3600 * 24 * 7)) * response[0].precio_p3*response[0].porcentaje_p3/100
+        this.generado_p1 = (f1 != undefined) ? this.time1 * response[0].precio_p1*response[0].porcentaje_p1/100 : undefined
+        this.generado_p2 = (f2 != undefined) ? this.time2 * response[0].precio_p2*response[0].porcentaje_p2/100 : undefined
+        this.generado_p3 = (f3 != undefined) ? this.time3 * response[0].precio_p3*response[0].porcentaje_p3/100 : undefined
+        this.generado_p4 = (f4 != undefined) ? this.time4 * response[0].precio_p4*response[0].porcentaje_p4/100 : undefined
 
         // console.log( Math.trunc(time1/(1000 * 3600 * 24 * 7)) * response[0].precio_p1)
         this.gananciaCalculada = this.generado_p1*1 + this.generado_p2*1 + this.generado_p3

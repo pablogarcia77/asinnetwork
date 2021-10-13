@@ -24,9 +24,9 @@
             <p class="col s4 mb-0 right-align">Vencimiento</p>
         </div>
         <div class="row" [ngClass]="{'mb-0': portafolios.length -1 != i}" *ngFor="let portafolio of portafolios;index as i">
-            <p class="col s2 mb-0">{{portafolio.portafolio.tipo.toUpperCase()}}</p>
-            <p class="col s5 mb-0 right-align">{{portafolio.fecha | date:'d/MM/yy'}}</p>
-            <p class="col s4 mb-0 right-align">{{portafolio.vencimiento | date:'d/MM/yy'}}</p>
+            <p class="col s2 mb-0">{{portafolio?.portafolio.tipo.toUpperCase()}}</p>
+            <p class="col s5 mb-0 right-align">{{portafolio?.fecha | date:'d/MM/yy'}}</p>
+            <p class="col s4 mb-0 right-align">{{portafolio?.vencimiento | date:'d/MM/yy'}}</p>
         </div>
         <!-- <h3><span>Semanas:</span></h3> -->
         <h3><span>Banco:</span> {{usuario.banco}}</h3>
