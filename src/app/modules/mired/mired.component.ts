@@ -16,6 +16,7 @@ import { EditarGananciasComponent } from 'src/app/admin/editar-ganancias/editar-
 import { GananciasService } from 'src/app/services/ganancias.service';
 import { Ganancia } from 'src/app/models/ganancia';
 import { RangosService } from 'src/app/services/rangos.service';
+import { Rango } from 'src/app/models/rango';
 
 @Component({
   selector: 'app-mired',
@@ -43,7 +44,7 @@ export class MiredComponent implements OnInit {
 
   gananciaCalculada: number=0;
 
-  rango!: string;
+  rango!: Rango;
 
   nodos!: Node[];
   links!: Edge[];
@@ -138,7 +139,7 @@ export class MiredComponent implements OnInit {
 
     this.rangosService.getRangoUsuario(this.usuario.id).subscribe(
       response => {
-        this.rango = response[0].rango
+        this.rango = response
         // console.log(this.rango)
       }
     )
@@ -157,7 +158,7 @@ export class MiredComponent implements OnInit {
 
     this.arbolService.getMiArbol(this.user).subscribe(
       response => {
-        console.log(response)
+        // console.log(response)
         this.userService.getUsuario(response[0].patrocinador).subscribe(
           response => {
             // console.log(response)
@@ -178,10 +179,10 @@ export class MiredComponent implements OnInit {
         this.time3 = (f3 != undefined) ? Math.trunc((hoy.getTime() - f3.getTime())/(1000*3600*24*7)) : undefined
         this.time4 = (f4 != undefined) ? Math.trunc((hoy.getTime() - f4.getTime())/(1000*3600*24*7)) : undefined
 
-        console.log(this.time1)
-        console.log(this.time2)
-        console.log(this.time3)
-        console.log(this.time4)
+        // console.log(this.time1)
+        // console.log(this.time2)
+        // console.log(this.time3)
+        // console.log(this.time4)
 
         // this.weeks = Math.trunc(time/(1000 * 3600 * 24 * 7)) * response[0].puntos_p1;
         this.generado_p1 = (f1 != undefined) ? this.time1 * response[0].precio_p1*response[0].porcentaje_p1/100 : undefined
@@ -194,18 +195,20 @@ export class MiredComponent implements OnInit {
 
         // console.log(this.arbol)
         
-          nodex.portafolio = new Array<Porta>();
-          // Seteo Portafolios de la raiz
-          let width = 0;
-          for(var y=1;y<=3;y++){
-            if(response[0]["p" + y ]){
-              let cad = new Porta();
-              cad.image = this.href + response[0]["p" + y ] + '.png';
-              cad.x = width;
-              width = width + 20;
-              nodex.portafolio.push(cad)
-            }
+        nodex.portafolio = new Array<Porta>();
+        // Seteo Portafolios de la raiz
+        let width = 0;
+        for(var y=1;y<=3;y++){
+          if(response[0]["p" + y ]){
+            let cad = new Porta();
+            cad.image = this.href + response[0]["p" + y ] + '.png';
+            cad.x = width;
+            width = width + 20;
+            nodex.portafolio.push(cad)
           }
+        }
+
+
       }
     )
 

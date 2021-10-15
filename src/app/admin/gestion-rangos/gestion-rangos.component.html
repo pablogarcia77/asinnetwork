@@ -1,0 +1,93 @@
+<div class="container pt-50">
+    <div class="row">
+        <div class="col s6">
+            <h1>Rangos de Socios</h1>
+        </div>
+        <div class="col s6">
+            <button type="button" class="col s12 waves-effect waves-light btn red darken-4" (click)="openDialogT(nuevo)">Nuevo Rango</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <div class="row">
+                <div class="col s12">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Seleccione Rango</mat-label>
+                        <mat-select [(ngModel)]="selected" name="rango">
+                          <mat-option class="not-empty-select" *ngFor="let rango of rangos" [value]="rango" >
+                            {{rango.rango.toUpperCase()}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col s12">
+                    <button type="button" class="col s12 waves-effect waves-light btn red darken-4" (click)="openDialogT(delete)" [disabled]="selected.id == 0">Eliminar Rango</button>
+                </div>
+            </div>
+        </div>
+        <div class="col s6">
+            <div class="row">
+                <div class="col s12">
+                    <h1>Rango: {{selected?.rango | uppercase}}</h1>
+                </div>
+                <div class="col s12">
+                    <img [src]="selected?.url_imagen" [alt]="selected?.rango" class="imagen-rango">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-0">
+        <!-- <button type="button" class="col s12 waves-effect waves-light btn red darken-4" (click)="openDialogTemplate(myDialog)">Actualizar Portafolio</button> -->
+    </div>
+</div>
+
+<ng-template #nuevo>
+    <mat-dialog-content>
+      <div class="row">
+        <p>Nuevo Rango</p>
+        <div class="row">
+            <div class="col s6">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput [value]="rango.rango" [(ngModel)]="rango.rango">
+                </mat-form-field>
+            </div>
+            <div class="col s6">
+                <button type="button" class="col s12 waves-effect waves-light btn red darken-4" (click)="imagenRango.click()">Subir Imagen</button>
+                <mat-progress-bar color="primary"
+                    mode="determinate"
+                    [value]="progress"></mat-progress-bar>
+                <input hidden type="file" #imagenRango mat-raised-button accept="image/*" (change)="readThis($event)">
+            </div>
+        </div>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <div class="row">
+            <div class="col s6">
+                <button mat-button class="w-100 waves-effect waves-light btn red darken-4" (click)="nuevoRango()" mat-dialog-close>Aceptar</button>
+            </div>
+            <div class="col s6">
+                <button mat-button class="w-100 waves-effect waves-light btn red darken-4" mat-dialog-close>Cancelar</button>
+            </div>
+        </div>
+    </mat-dialog-actions>
+</ng-template>
+
+<ng-template #delete>
+    <mat-dialog-content>
+      <div class="row">
+        <p>¿Seguro desea eliminar el rango? Esta opción es irreversible!</p>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <div class="row">
+            <div class="col s6">
+                <button mat-button class="w-100 waves-effect waves-light btn red darken-4" mat-dialog-close (click)="deleteRango()">Aceptar</button>
+            </div>
+            <div class="col s6">
+                <button mat-button class="w-100 waves-effect waves-light btn red darken-4" mat-dialog-close>Cancelar</button>
+            </div>
+        </div>
+    </mat-dialog-actions>
+</ng-template>

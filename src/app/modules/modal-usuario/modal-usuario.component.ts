@@ -38,9 +38,15 @@ export class ModalUsuarioComponent implements OnInit {
               r => {
                 let fecha = new Date(response[0]["fecha_p" + y]);
                 let lista = new ListaPortafolio();
-                let vencimiento = new Date();
+                // let vencimiento = new Date();
                 lista.semanas = response[0]["s" + y];
-                vencimiento.setDate(fecha.getDate() + (7*lista.semanas));
+                // console.log(lista)
+                // console.log(fecha)
+                // console.log(fecha.getTime() + (604800000 * lista.semanas))
+                // console.log(fecha.getTime())
+                // Get date in miliseconds & sum weeks (25/50) in miliseconds
+                let vencimiento = new Date(fecha.getTime() + (6048 * 100000 * lista.semanas));
+                // console.log(vencimiento)
                 lista.vencimiento = vencimiento;
                 lista.fecha = fecha;
                 portafolio = r[0];

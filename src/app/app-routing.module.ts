@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GestionPortafoliosComponent } from './admin/gestion-portafolios/gestion-portafolios.component';
+import { GestionRangosComponent } from './admin/gestion-rangos/gestion-rangos.component';
 import { ListaUsuariosComponent } from './admin/lista-usuarios/lista-usuarios.component';
 import { AsociarComponent } from './modules/asociar/asociar.component';
 import { HerramientasComponent } from './modules/herramientas/herramientas.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
       {path: 'perfil', component: PerfilComponent},
       {path: 'redes', component: MiredComponent},
       {path: 'portafolios', component: GestionPortafoliosComponent},
+      {path: 'rangos', component: GestionRangosComponent},
       {path: 'asociar', component: AsociarComponent},
       {path: 'ganancias', component: MisgananciasComponent},
       {path: 'ganancias', component: MisgananciasComponent},

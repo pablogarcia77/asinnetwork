@@ -56,6 +56,7 @@ import { NuevoPortafolioComponent } from './admin/nuevo-portafolio/nuevo-portafo
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { TosComponent } from './modules/tos/tos.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { GestionRangosComponent } from './admin/gestion-rangos/gestion-rangos.component';
 
 
 
@@ -92,6 +93,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     EditarRangosComponent,
     NuevoPortafolioComponent,
     TosComponent,
+    GestionRangosComponent,
   ],
   imports: [
     BrowserModule,

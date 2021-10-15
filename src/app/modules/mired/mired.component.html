@@ -8,7 +8,7 @@
               <div class="row">
                 <div class="col s12">Patrocinador: {{patrocinador?.apellido}}, {{patrocinador?.nombre}}</div>
                 <div class="col s12">Cantidad a izquierda: {{izquierda}}</div>
-                <div class="col s12" *ngIf="data">Puntos a izquierda (autocalculado): {{puntosIzquierda}}</div>
+                <div class="col s12" *ngIf="data">Puntos a izquierda: {{puntosIzquierda}}</div>
                 <!-- <div class="col s12">Puntos a izquierda: {{ganancias?.puntos_izquierda}}</div> -->
                 <div class="col s12">
                   <p>Ganancia Semanal: ${{ganancias?.semanal}}</p>
@@ -19,14 +19,19 @@
                   <p *ngIf="arbol?.p4">Portafolio 4: ${{generado_p4}}</p>
                 </div>
                 <div class="col s12">
-                  <p>Rango: {{rango}}</p>
+                  <div class="col s6">
+                    <p>Rango: {{rango?.rango}}</p>
+                  </div>
+                  <div class="col s6">
+                    <img [src]="rango?.url_imagen" [alt]="rango?.rango" class="pin">
+                  </div>
                 </div>
               </div>
             </div>
             <div class="col s4">
               <div class="row">
                 <div class="col s12">Cantidad a derecha: {{derecha}}</div>
-                <div class="col s12" *ngIf="data">Puntos a derecha (autocalculado): {{puntosDerecha}}</div>
+                <div class="col s12" *ngIf="data">Puntos a derecha: {{puntosDerecha}}</div>
                 <!-- <div class="col s12">Puntos a derecha: {{ganancias?.puntos_derecha}}</div> -->
                 <div class="col s12" *ngIf="time1">Portafolio 1: {{time1}} semanas</div>
                 <div class="col s12" *ngIf="time2">Portafolio 2: {{time2}} semanas</div>

@@ -16,6 +16,7 @@
             <li><div class="divider grey darken-3"></div></li>
             <!-- Admin -->
             <li *ngIf="usuario.tipo == 'admin'"><a [routerLink]="['portafolios']" class="blanco"><fa-icon [icon]="faBriefCase" size="1x" class="icono"></fa-icon>Gestionar Portafolios</a></li>
+            <li *ngIf="usuario.tipo == 'admin'"><a [routerLink]="['rangos']" class="blanco"><fa-icon [icon]="faMedal" size="1x" class="icono"></fa-icon>Gestionar Rangos</a></li>
             <li *ngIf="usuario.tipo == 'admin'"><a [routerLink]="['lista-de-usuarios']" class="blanco"><fa-icon [icon]="faUsers" size="1x" class="icono"></fa-icon>Ver Usuarios</a></li>
             <!-- <li *ngIf="usuario.tipo == 'admin'"><a [routerLink]="['portafolios']" class="blanco"><fa-icon [icon]="faProjectDiagram" size="1x" class="icono"></fa-icon>Ver Redes</a></li> -->
             <!-- Usuarios Normales -->

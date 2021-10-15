@@ -23,3 +23,7 @@
 
     transform: scale(0.8);
 }
+.pin{
+    height: 30px;
+    width: auto;
+}
