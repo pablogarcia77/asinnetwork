@@ -9,6 +9,8 @@
                 <div class="col s12">Patrocinador: {{patrocinador?.apellido}}, {{patrocinador?.nombre}}</div>
                 <div class="col s12">Cantidad a izquierda: {{izquierda}}</div>
                 <div class="col s12" *ngIf="data">Puntos a izquierda: {{puntosIzquierda}}</div>
+                <div class="col s12">Semanal izquierda: {{semanalIzquierda}}</div>
+                <div class="col s12">Binario izquierda: {{binario.izquierda}}</div>
                 <!-- <div class="col s12">Puntos a izquierda: {{ganancias?.puntos_izquierda}}</div> -->
                 <div class="col s12">
                   <p>Ganancia Semanal: ${{ganancias?.semanal}}</p>
@@ -30,8 +32,11 @@
             </div>
             <div class="col s4">
               <div class="row">
+                <div class="col s12">&nbsp;</div>
                 <div class="col s12">Cantidad a derecha: {{derecha}}</div>
                 <div class="col s12" *ngIf="data">Puntos a derecha: {{puntosDerecha}}</div>
+                <div class="col s12">Semanal derecha: {{semanalDerecha}}</div>
+                <div class="col s12">Binario derecha: {{binario.derecha}}</div>
                 <!-- <div class="col s12">Puntos a derecha: {{ganancias?.puntos_derecha}}</div> -->
                 <div class="col s12" *ngIf="time1">Portafolio 1: {{time1}} semanas</div>
                 <div class="col s12" *ngIf="time2">Portafolio 2: {{time2}} semanas</div>
@@ -50,6 +55,11 @@
                 <div class="col s12">Binario: ${{ganancias?.binario}}</div>
                 <div class="col s12">Total a Cobrar: ${{ganancias?.total}}</div>
               </div>
+              <div class="row" *ngIf="data">
+                <div class="col s12">
+                  <button type="button" class="col s12 waves-effect waves-light btn red darken-4" (click)="calcularBinario()">Calcular binario</button>
+                </div>
+              </div>
             </div>
           </div>
           <div class="row" *ngIf="data">
@@ -58,11 +68,16 @@
               <mat-expansion-panel (opened)="panelOpenState = true"
                                    (closed)="panelOpenState = false">
                 <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    Editar Ganancias
-                  </mat-panel-title>
+                  <mat-panel-title>Editar Ganancias</mat-panel-title>
                 </mat-expansion-panel-header>
                 <app-editar-ganancias [user]="data.usuario"></app-editar-ganancias>
+              </mat-expansion-panel>
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>Editar Historicos</mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-gestion-puntos [user]="data.usuario" [historicoIzquierda]="puntosIzquierda" [historicoDerecha]="puntosDerecha"></app-gestion-puntos>
               </mat-expansion-panel>
             </mat-accordion>
           </div>

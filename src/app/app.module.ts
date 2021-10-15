@@ -57,6 +57,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { TosComponent } from './modules/tos/tos.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { GestionRangosComponent } from './admin/gestion-rangos/gestion-rangos.component';
+import { GestionPuntosComponent } from './admin/gestion-puntos/gestion-puntos.component';
 
 
 
@@ -94,6 +95,7 @@ import { GestionRangosComponent } from './admin/gestion-rangos/gestion-rangos.co
     NuevoPortafolioComponent,
     TosComponent,
     GestionRangosComponent,
+    GestionPuntosComponent,
   ],
   imports: [
     BrowserModule,

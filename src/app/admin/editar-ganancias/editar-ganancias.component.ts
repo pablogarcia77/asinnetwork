@@ -35,7 +35,7 @@ export class EditarGananciasComponent implements OnInit {
   ngOnInit(): void {
     // this.usuario = this.data.usuario
     this.usuario = this.user;
-    console.log(this.usuario)
+    // console.log(this.usuario)
     
   }
 

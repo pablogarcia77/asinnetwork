@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col s6">
+        <mat-form-field appearance="standard">
+            <mat-label>Puntos Izquierda:</mat-label>
+            <input matInput type="text" [(ngModel)]="puntos.izquierda">
+        </mat-form-field>
+    </div>
+    <div class="col s6">
+        <mat-form-field appearance="standard">
+            <mat-label>Puntos Derecha</mat-label>
+            <input matInput type="text" [(ngModel)]="puntos.derecha">
+        </mat-form-field>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <button mat-button class="col s12 waves-effect waves-light btn red darken-4" (click)="actualizarPuntos()">Guardar</button>
+    </div>
+</div>

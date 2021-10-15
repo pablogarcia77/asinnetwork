@@ -12,11 +12,12 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ModalUsuarioComponent } from '../modal-usuario/modal-usuario.component';
 import { Porta } from 'src/app/models/porta';
 import { PortafolioService } from 'src/app/services/portafolio.service';
-import { EditarGananciasComponent } from 'src/app/admin/editar-ganancias/editar-ganancias.component';
 import { GananciasService } from 'src/app/services/ganancias.service';
 import { Ganancia } from 'src/app/models/ganancia';
 import { RangosService } from 'src/app/services/rangos.service';
 import { Rango } from 'src/app/models/rango';
+import { PuntosService } from 'src/app/services/puntos.service';
+import { Puntos } from 'src/app/models/puntos';
 
 @Component({
   selector: 'app-mired',
@@ -39,6 +40,10 @@ export class MiredComponent implements OnInit {
   derecha!: number;
   puntosIzquierda: number = 0;
   puntosDerecha: number = 0;
+  semanalIzquierda: number = 0;
+  semanalDerecha: number = 0;
+
+  binario!: Puntos;
 
   public patrocinador: Usuario;
 
@@ -80,9 +85,9 @@ export class MiredComponent implements OnInit {
   constructor(
     private arbolService: ArbolService,
     private userService: UsuariosService,
-    private portafolioService: PortafolioService,
     private gananciasService: GananciasService,
     private rangosService: RangosService,
+    private puntosService: PuntosService,
     @Optional()@Inject(MAT_DIALOG_DATA)
     public data: {usuario: Usuario,posicion: string},
     public dialog: MatDialog
@@ -107,6 +112,10 @@ export class MiredComponent implements OnInit {
 
     this.patrocinador = new Usuario();
 
+    this.binario = new Puntos()
+    this.binario.izquierda = 0
+    this.binario.derecha = 0
+
   }
 
   ngOnInit(): void {
@@ -125,6 +134,13 @@ export class MiredComponent implements OnInit {
       this.usuario = usuario
     }
 
+    this.puntosService.getPuntosByUser(this.usuario).subscribe(
+      response => {
+        console.log(response)
+        this.binario = response
+      }
+    )
+
     // console.log(this.usuario)
     this.dibujar(this.usuario);
     // console.log(this.nodos);
@@ -141,6 +157,32 @@ export class MiredComponent implements OnInit {
       response => {
         this.rango = response
         // console.log(this.rango)
+      }
+    )
+  }
+
+  calcularBinario(){
+    if(!(this.semanalIzquierda == 0 || this.semanalDerecha == 0)){
+      if(this.semanalIzquierda >= this.semanalDerecha){
+        this.binario.historico_izquierda = (this.binario.historico_izquierda*1) + (this.semanalDerecha*1)
+        this.semanalIzquierda = this.semanalIzquierda - this.semanalDerecha
+        this.binario.izquierda = this.semanalIzquierda
+        this.binario.historico_derecha = this.puntosDerecha
+        console.log(this.binario)
+        this.binario.derecha = 0
+        this.semanalDerecha = 0
+      }else{
+        this.binario.historico_derecha = (this.binario.historico_derecha*1) + (this.semanalIzquierda*1)
+        this.semanalDerecha = this.semanalDerecha - this.semanalIzquierda
+        this.binario.derecha = this.semanalDerecha
+        this.binario.historico_izquierda = this.puntosIzquierda
+        this.binario.izquierda = 0
+        this.semanalIzquierda = 0
+      }
+    }
+    this.puntosService.postPuntosByUser(this.usuario,this.binario).subscribe(
+      response => {
+        console.log(response)
       }
     )
   }
@@ -459,9 +501,25 @@ export class MiredComponent implements OnInit {
     setTimeout(() => {
       this.update$.next(true);
       this.zoomToFit$.next(true)
-    }, 1000);
+      this.semanalDerecha = this.puntosDerecha - this.binario.historico_derecha
+      this.semanalIzquierda = this.puntosIzquierda - this.binario.historico_izquierda
+    }, 2000);
     // this.center$.next(true)
+    
   }
+
+  // nuevoHistorico(izquierda,derecha){
+  //   if(this.semanalDerecha == 0){
+  //     this.binario.historico_derecha = this.puntosDerecha
+  //   }else{
+  //     this.binario.historico_derecha = 
+  //   }
+  //   if(this.semanalIzquierda == 0){
+  //     this.binario.historico_izquierda = this.puntosIzquierda
+  //   }else{
+
+  //   }
+  // }
 
   verUsuario(id: any,posicion: any){
     this.userService.getUsuario(id).subscribe(
