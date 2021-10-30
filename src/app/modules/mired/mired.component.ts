@@ -200,11 +200,19 @@ export class MiredComponent implements OnInit {
 
     this.arbolService.getMiArbol(this.user).subscribe(
       response => {
-        // console.log(response)
+        console.log(response)
         this.userService.getUsuario(response[0].patrocinador).subscribe(
           response => {
-            // console.log(response)
-            this.patrocinador = response[0]
+            console.log(response)
+            if(response[0].estado == 1){
+              this.patrocinador = response[0]
+            }else{
+              this.userService.getPatrocinador(response[0].id).subscribe(
+                response => {
+                  this.patrocinador = response
+                }
+              )
+            }
           }
         )
         this.arbol = response[0]
@@ -256,23 +264,23 @@ export class MiredComponent implements OnInit {
 
     this.arbolService.getArbol(this.user).subscribe(
       response => {
-        // console.log(response)
+        console.log(response)
         for (let index = 0; index < response.length; index++) {
-        if(response[index].estado == 1){
+          // if(response[index].estado == 1){
             this.user = new Usuario();
             this.user.id = response[index].id;
             this.user.username = response[index];
 
             let nod = new Nodex();
             nod.id = response[index].id.toString();
-            nod.label = response[index].username;
+            nod.label = (response[index].estado == 1) ? response[index].username : 'Usuario eliminado';
             nod.posicion = response[index].posicion;
             nod.portafolio = new Array<Porta>();
 
             // Seteo Portafolios
             let width = 0;
             for(var y=1;y<=3;y++){
-              if(response[index]["p" + y ]){
+              if(response[index]["p" + y ] && response[index]["estado"] == 1){
                 let cad = new Porta();
                 cad.image = this.href + response[index]["p" + y ] + '.png';
                 cad.x = width;
@@ -284,7 +292,7 @@ export class MiredComponent implements OnInit {
             if(response[index].posicion == 'Derecha'){
               this.derecha++;
               for(var y=1;y<=3;y++){
-                if(response[index]["p" + y ]){
+                if(response[index]["p" + y ] && response[index]["estado"] == 1){
                   // this.portafolioService.getPortafolio(response[index]["p" + y ]).subscribe(
                   //   portafolio => {
                   //     this.puntosDerecha += Number(portafolio[0].puntos);
@@ -296,7 +304,7 @@ export class MiredComponent implements OnInit {
             }else{
               this.izquierda++;
               for(var y=1;y<=3;y++){
-                if(response[index]["p" + y ]){
+                if(response[index]["p" + y ] && response[index]["estado"] == 1){
                   // this.portafolioService.getPortafolio(response[index]["p" + y ]).subscribe(
                   //   portafolio => {
                   //     this.puntosIzquierda += Number(response[index]["puntos_p" + y ]);
@@ -316,21 +324,21 @@ export class MiredComponent implements OnInit {
             this.arbolService.getArbol(this.user).subscribe(
               res => {
                 for(let i = 0 ; i < res.length; i++){
-                  if(res[i].estado == 1){
+                  // if(res[i].estado == 1){
                     this.user = new Usuario();
                     this.user.id = res[i].id;
                     this.user.username = res[i];
 
                     let n = new Nodex();
                     n.id = res[i].id.toString();
-                    n.label = res[i].username;
+                    n.label = (res[i].estado==1) ? res[i].username : 'Usuario eliminado';
                     n.posicion = res[i].posicion;
 
                     n.portafolio = new Array<Porta>();
                     // Seteo portafolios
                     let width = 0;
                     for(var y=1;y<=3;y++){
-                      if(res[i]["p" + y ]){
+                      if(res[i]["p" + y ] && res[i]["estado"] == 1){
                         let cad = new Porta();
                         cad.image = this.href + res[i]["p" + y ] + '.png';
                         cad.x = width;
@@ -344,7 +352,7 @@ export class MiredComponent implements OnInit {
                     if(response[index].posicion == 'Derecha'){
                       this.derecha++;
                       for(var y=1;y<=3;y++){
-                        if(res[i]["p" + y ]){
+                        if(res[i]["p" + y ] && res[i]["estado"] == 1){
                           // this.portafolioService.getPortafolio(res[i]["p" + y ]).subscribe(
                           //   portafolio => {
                           //     this.puntosDerecha += Number(portafolio[0].puntos);
@@ -356,7 +364,7 @@ export class MiredComponent implements OnInit {
                     }else{
                       this.izquierda++;
                       for(var y=1;y<=3;y++){
-                        if(res[i]["p" + y ]){
+                        if(res[i]["p" + y ] && res[i]["estado"] == 1){
                           // this.portafolioService.getPortafolio(res[i]["p" + y ]).subscribe(
                           //   portafolio => {
                           //     this.puntosIzquierda += Number(portafolio[0].puntos);
@@ -374,21 +382,21 @@ export class MiredComponent implements OnInit {
                     this.arbolService.getArbol(this.user).subscribe(
                       r => {
                         for (let j = 0; j < r.length; j++) {
-                          if(r[j].estado == 1){
+                          // if(r[j].estado == 1){
                             this.user = new Usuario();
                             this.user.id = r[j].id;
                             this.user.username = r[j];
 
                             let nod = new Nodex();
                             nod.id = r[j].id.toString();
-                            nod.label = r[j].username;
+                            nod.label = (r[j].estado==1) ? r[j].username : 'Usuario eliminado';
                             nod.posicion = r[j].posicion;
 
                             nod.portafolio = new Array<Porta>();
                             // Seteo Portafolios
                             let width = 0;
                             for(var y=1;y<=3;y++){
-                              if(r[j]["p" + y ]){
+                              if(r[j]["p" + y ] && r[j]["estado"] == 1){
                                 let cad = new Porta();
                                 cad.image = this.href + r[j]["p" + y ] + '.png';
                                 cad.x = width;
@@ -403,7 +411,7 @@ export class MiredComponent implements OnInit {
                             if(response[index].posicion == 'Derecha'){
                               this.derecha++;
                               for(var y=1;y<=3;y++){
-                                if(r[j]["p" + y ]){
+                                if(r[j]["p" + y ] && r[j]["estado"] == 1){
                                   // this.portafolioService.getPortafolio(r[j]["p" + y ]).subscribe(
                                   //   portafolio => {
                                   //     this.puntosDerecha += Number(portafolio[0].puntos);
@@ -415,7 +423,7 @@ export class MiredComponent implements OnInit {
                             }else{
                               this.izquierda++;
                               for(var y=1;y<=3;y++){
-                                if(r[j]["p" + y ]){
+                                if(r[j]["p" + y ] && r[j]["estado"] == 1){
                                   // this.portafolioService.getPortafolio(r[j]["p" + y ]).subscribe(
                                   //   portafolio => {
                                   //     this.puntosIzquierda += Number(portafolio[0].puntos);
@@ -432,21 +440,21 @@ export class MiredComponent implements OnInit {
                             this.arbolService.getArbol(this.user).subscribe(
                               rs => {
                                 for (let k = 0; k < rs.length; k++) {
-                                  if(rs[k].estado==1){
+                                  // if(rs[k].estado==1){
                                     this.user = new Usuario();
                                     this.user.id = rs[k].id;
                                     this.user.username = rs[k].username;
 
                                     let not = new Nodex();
                                     not.id = rs[k].id.toString();
-                                    not.label = rs[k].username;
+                                    not.label = (rs[k].estado==1) ? rs[k].username : 'Usuario eliminado';
                                     not.posicion = rs[k].posicion;
 
                                     not.portafolio = new Array<Porta>();
                                     // Seteo portafolios
                                     let width = 0;
                                     for(var y=1;y<=3;y++){
-                                      if(rs[k]["p" + y ]){
+                                      if(rs[k]["p" + y ] && rs[k]["estado"] == 1){
                                         let cad = new Porta();
                                         cad.image = this.href + rs[k]["p" + y ] + '.png';
                                         cad.x = width;
@@ -462,7 +470,7 @@ export class MiredComponent implements OnInit {
                                     if(response[index].posicion == 'Derecha'){
                                       this.derecha++;
                                       for(var y=1;y<=3;y++){
-                                        if(rs[k]["p" + y ]){
+                                        if(rs[k]["p" + y ] && rs[k]["estado"] == 1){
                                           // this.portafolioService.getPortafolio(rs[k]["p" + y ]).subscribe(
                                           //   portafolio => {
                                           //     this.puntosDerecha += Number(portafolio[0].puntos);
@@ -474,7 +482,7 @@ export class MiredComponent implements OnInit {
                                     }else{
                                       this.izquierda++;
                                       for(var y=1;y<=3;y++){
-                                        if(rs[k]["p" + y ]){
+                                        if(rs[k]["p" + y ] && rs[k]["estado"] == 1){
                                           // this.portafolioService.getPortafolio(rs[k]["p" + y ]).subscribe(
                                           //   portafolio => {
                                           //     this.puntosIzquierda += Number(portafolio[0].puntos);
@@ -488,19 +496,19 @@ export class MiredComponent implements OnInit {
                                     e4.source = rs[k].patrocinador;
                                     e4.target = rs[k].id;
                                     this.links.push(e4);
-                                  }
+                                  // } cuarto if estado
                                 }
                               }
                             )
-                          }
+                          // } tercer if estado
                         }
                       }
                     )
-                  }
+                  // } segundo if estado
                 }
               }
             )
-          }
+          // } primer if estado
         }
       }
     )  

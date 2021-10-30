@@ -42,6 +42,10 @@ export class UsuariosService {
     return this.http.get(this.urlBase + '/usuarios.php?id=' + id);
   }
 
+  getPatrocinador(id: number):Observable<any>{
+    return this.http.get(this.urlBase + '/patrocinador.php?id=' + id)
+  }
+
   postUsuario(usuario: Usuario):Observable<any>{
     const fd = new FormData();
     fd.append('username',usuario.username);
@@ -77,4 +81,5 @@ export class UsuariosService {
     return this.http.delete(this.urlBase + '/usuarios.php?id=' + usuario.id);
   }
 
+  
 }
