@@ -73,8 +73,8 @@ export class UsuariosService {
     return this.http.get(this.urlBase + '/verificarUsuario.php?username='+usuario.username);
   }
 
-  stateUsuario(usuario: Usuario, estado: string):Observable<any>{
-    return this.http.delete(this.urlBase + '/usuarios.php?id=' + usuario.id + '&estado=' + estado);
+  stateUsuario(usuario: Usuario, bloqueado: string):Observable<any>{
+    return this.http.delete(this.urlBase + '/usuarios.php?id=' + usuario.id + '&bloqueado=' + bloqueado);
   }
 
   deleteUsuario(usuario: Usuario):Observable<any>{

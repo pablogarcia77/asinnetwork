@@ -83,9 +83,9 @@ export class ListaUsuariosComponent implements OnInit {
   }
 
   stateUsuario(usuario: Usuario){
-    let estado = (usuario.estado == "1") ? "0" : "1";
-    let mensaje = (estado == "0") ? "Usuario Bloqueado" : "Usuario Desbloqueado";
-    this.usuariosService.stateUsuario(usuario,estado).subscribe(
+    let bloqueado = (usuario.bloqueado == "1") ? "0" : "1";
+    let mensaje = (bloqueado == "1") ? "Usuario Bloqueado" : "Usuario Desbloqueado";
+    this.usuariosService.stateUsuario(usuario,bloqueado).subscribe(
       () => {
         this.cargarTabla();
         this.openSnackBar(mensaje);

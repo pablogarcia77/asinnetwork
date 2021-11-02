@@ -48,9 +48,13 @@ export class LoginComponent implements OnInit {
         }else{
           this.usuario = response;
           // console.log(this.usuario)
-          localStorage.setItem('currentUser',JSON.stringify(this.usuario));
-          this.router.navigate(['panel']);
-          this.dialog.closeAll();
+          if(this.usuario.bloqueado == '1'){
+            this.snackBar.open("Usuario Bloqueado, contacte al administrador!","Aceptar",{duration:1500})
+          }else{
+            localStorage.setItem('currentUser',JSON.stringify(this.usuario));
+            this.router.navigate(['panel']);
+            this.dialog.closeAll();
+          }
         }
       }
     )

@@ -16,6 +16,8 @@ export class Usuario{
     tipo!: string
     estado!: string;
     registro!: string;
+    bloqueado!: string;
+
     constructor(
         
     ){}

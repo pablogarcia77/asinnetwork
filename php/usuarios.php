@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 if ($_SERVER['REQUEST_METHOD'] == 'GET'){
   if (!isset($_GET['id'])){
     //Mostrar todos los usuarios
-    $sql = $dbConn->prepare("SELECT id,apellido,nombre,username,telefono,documento,banco,numero_cuenta,estado,email,domicilio,tipo,url_documento_frente,url_documento_dorso,registro,password FROM usuario WHERE estado=1");
+    $sql = $dbConn->prepare("SELECT id,apellido,nombre,username,telefono,documento,banco,numero_cuenta,estado,email,domicilio,tipo,url_documento_frente,url_documento_dorso,registro,bloqueado,password FROM usuario WHERE estado=1");
     $sql->execute();
     $sql->setFetchMode(PDO::FETCH_ASSOC);
     header("HTTP/1.1 200 OK");
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
     exit();
   }else {
     //Mostrar un usuario especifico
-    $sql = $dbConn->prepare("SELECT id,apellido,nombre,username,telefono,documento,banco,numero_cuenta,estado,email,domicilio,tipo,url_documento_frente,url_documento_dorso,registro FROM usuario WHERE id=:id");
+    $sql = $dbConn->prepare("SELECT id,apellido,nombre,username,telefono,documento,banco,numero_cuenta,estado,email,domicilio,tipo,url_documento_frente,url_documento_dorso,registro,bloqueado FROM usuario WHERE id=:id");
     $sql->bindValue(':id', $_GET['id']);
     $sql->execute();
     $sql->setFetchMode(PDO::FETCH_ASSOC);
@@ -61,8 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
   $id = $_GET['id'];
-  $statement = $dbConn->prepare("UPDATE usuario SET estado=0 WHERE id=:id");
+  $statement = $dbConn->prepare("UPDATE usuario SET bloqueado=:bloqueado WHERE id=:id");
   $statement->bindValue(':id', $id);
+  $statement->bindValue(':bloqueado', $_GET['bloqueado']);
   // $statement->bindValue(':estado', $estado);
   $statement->execute();
   header("HTTP/1.1 200 OK");
