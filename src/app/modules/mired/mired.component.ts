@@ -273,7 +273,7 @@ export class MiredComponent implements OnInit {
 
             let nod = new Nodex();
             nod.id = response[index].id.toString();
-            nod.eliminado = (response[index].estado == 1) ? false : true;
+            nod.eliminado = (response[index].bloqueado== 0) ? false : true;
             nod.label = response[index].username;
             nod.posicion = response[index].posicion;
             nod.portafolio = new Array<Porta>();
