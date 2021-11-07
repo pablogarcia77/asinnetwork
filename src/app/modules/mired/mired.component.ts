@@ -273,7 +273,8 @@ export class MiredComponent implements OnInit {
 
             let nod = new Nodex();
             nod.id = response[index].id.toString();
-            nod.label = (response[index].estado == 1) ? response[index].username : 'Usuario eliminado';
+            nod.eliminado = (response[index].estado == 1) ? false : true;
+            nod.label = response[index].username;
             nod.posicion = response[index].posicion;
             nod.portafolio = new Array<Porta>();
 
@@ -331,7 +332,8 @@ export class MiredComponent implements OnInit {
 
                     let n = new Nodex();
                     n.id = res[i].id.toString();
-                    n.label = (res[i].estado==1) ? res[i].username : 'Usuario eliminado';
+                    n.eliminado = (res[i].bloqueado==0) ? false : true;
+                    n.label = res[i].username;
                     n.posicion = res[i].posicion;
 
                     n.portafolio = new Array<Porta>();
@@ -389,7 +391,8 @@ export class MiredComponent implements OnInit {
 
                             let nod = new Nodex();
                             nod.id = r[j].id.toString();
-                            nod.label = (r[j].estado==1) ? r[j].username : 'Usuario eliminado';
+                            nod.eliminado = (r[j].bloqueado==0) ? false : true;
+                            nod.label = r[j].username;
                             nod.posicion = r[j].posicion;
 
                             nod.portafolio = new Array<Porta>();
@@ -447,7 +450,8 @@ export class MiredComponent implements OnInit {
 
                                     let not = new Nodex();
                                     not.id = rs[k].id.toString();
-                                    not.label = (rs[k].estado==1) ? rs[k].username : 'Usuario eliminado';
+                                    not.eliminado = (rs[k].bloqueado==0) ? false : true;
+                                    not.label = rs[k].username;
                                     not.posicion = rs[k].posicion;
 
                                     not.portafolio = new Array<Porta>();

@@ -5,6 +5,7 @@ export class Nodex {
     label!: string;
     portafolio!: Array<Porta>;
     posicion!: string;
+    eliminado!: boolean;
 
     constructor(){}
 }

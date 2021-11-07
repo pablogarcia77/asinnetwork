@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
   }else {
     //Mostrar un usuario especifico
     // $sql = $dbConn->prepare("SELECT u.id,u.username,a.posicion,a.patrocinador,a.p1,a.p2,a.p3,a.fecha_p1,a.fecha_p2,a.fecha_p3,a.s1,a.s2,a.s3,a.id as idArbol FROM usuario u, arbol a WHERE a.patrocinado=u.id AND a.patrocinador=:id ORDER BY a.posicion DESC");
-    $sql = $dbConn->prepare("SELECT u.id,u.estado,u.username,a.posicion,a.patrocinador,a.p1,a.p2,a.p3,a.fecha_p1,a.fecha_p2,a.fecha_p3,a.s1,a.s2,a.s3,a.precio_p1,a.precio_p2,a.precio_p3,a.porcentaje_p1,a.porcentaje_p2,a.porcentaje_p3,a.puntos_p1,a.puntos_p2,a.puntos_p3,a.id as idArbol FROM usuario u, arbol a WHERE a.patrocinado=u.id AND a.patrocinador=:id ORDER BY a.posicion DESC");
+    $sql = $dbConn->prepare("SELECT u.id,u.estado,u.bloqueado,u.username,a.posicion,a.patrocinador,a.p1,a.p2,a.p3,a.fecha_p1,a.fecha_p2,a.fecha_p3,a.s1,a.s2,a.s3,a.precio_p1,a.precio_p2,a.precio_p3,a.porcentaje_p1,a.porcentaje_p2,a.porcentaje_p3,a.puntos_p1,a.puntos_p2,a.puntos_p3,a.id as idArbol FROM usuario u, arbol a WHERE a.patrocinado=u.id AND a.patrocinador=:id ORDER BY a.posicion DESC");
     $sql->bindValue(':id', $_GET['id']);
     $sql->execute();
     $sql->setFetchMode(PDO::FETCH_ASSOC);
