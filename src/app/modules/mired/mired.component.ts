@@ -281,7 +281,7 @@ export class MiredComponent implements OnInit {
             // Seteo Portafolios
             let width = 0;
             for(var y=1;y<=3;y++){
-              if(response[index]["p" + y ] && response[index]["estado"] == 1){
+              if(response[index]["p" + y ] && response[index]["bloqueado"] == 0){
                 let cad = new Porta();
                 cad.image = this.href + response[index]["p" + y ] + '.png';
                 cad.x = width;
@@ -293,7 +293,7 @@ export class MiredComponent implements OnInit {
             if(response[index].posicion == 'Derecha'){
               this.derecha++;
               for(var y=1;y<=3;y++){
-                if(response[index]["p" + y ] && response[index]["estado"] == 1){
+                if(response[index]["p" + y ] && response[index]["bloqueado"] == 0){
                   // this.portafolioService.getPortafolio(response[index]["p" + y ]).subscribe(
                   //   portafolio => {
                   //     this.puntosDerecha += Number(portafolio[0].puntos);
@@ -305,7 +305,7 @@ export class MiredComponent implements OnInit {
             }else{
               this.izquierda++;
               for(var y=1;y<=3;y++){
-                if(response[index]["p" + y ] && response[index]["estado"] == 1){
+                if(response[index]["p" + y ] && response[index]["bloqueado"] == 0){
                   // this.portafolioService.getPortafolio(response[index]["p" + y ]).subscribe(
                   //   portafolio => {
                   //     this.puntosIzquierda += Number(response[index]["puntos_p" + y ]);
@@ -340,7 +340,7 @@ export class MiredComponent implements OnInit {
                     // Seteo portafolios
                     let width = 0;
                     for(var y=1;y<=3;y++){
-                      if(res[i]["p" + y ] && res[i]["estado"] == 1){
+                      if(res[i]["p" + y ] && res[i]["bloqueado"] == 0){
                         let cad = new Porta();
                         cad.image = this.href + res[i]["p" + y ] + '.png';
                         cad.x = width;
@@ -354,7 +354,7 @@ export class MiredComponent implements OnInit {
                     if(response[index].posicion == 'Derecha'){
                       this.derecha++;
                       for(var y=1;y<=3;y++){
-                        if(res[i]["p" + y ] && res[i]["estado"] == 1){
+                        if(res[i]["p" + y ] && res[i]["bloqueado"] == 0){
                           // this.portafolioService.getPortafolio(res[i]["p" + y ]).subscribe(
                           //   portafolio => {
                           //     this.puntosDerecha += Number(portafolio[0].puntos);
@@ -366,7 +366,7 @@ export class MiredComponent implements OnInit {
                     }else{
                       this.izquierda++;
                       for(var y=1;y<=3;y++){
-                        if(res[i]["p" + y ] && res[i]["estado"] == 1){
+                        if(res[i]["p" + y ] && res[i]["bloqueado"] == 0){
                           // this.portafolioService.getPortafolio(res[i]["p" + y ]).subscribe(
                           //   portafolio => {
                           //     this.puntosIzquierda += Number(portafolio[0].puntos);
@@ -399,7 +399,7 @@ export class MiredComponent implements OnInit {
                             // Seteo Portafolios
                             let width = 0;
                             for(var y=1;y<=3;y++){
-                              if(r[j]["p" + y ] && r[j]["estado"] == 1){
+                              if(r[j]["p" + y ] && r[j]["bloqueado"] == 0){
                                 let cad = new Porta();
                                 cad.image = this.href + r[j]["p" + y ] + '.png';
                                 cad.x = width;
@@ -414,7 +414,7 @@ export class MiredComponent implements OnInit {
                             if(response[index].posicion == 'Derecha'){
                               this.derecha++;
                               for(var y=1;y<=3;y++){
-                                if(r[j]["p" + y ] && r[j]["estado"] == 1){
+                                if(r[j]["p" + y ] && r[j]["bloqueado"] == 0){
                                   // this.portafolioService.getPortafolio(r[j]["p" + y ]).subscribe(
                                   //   portafolio => {
                                   //     this.puntosDerecha += Number(portafolio[0].puntos);
@@ -426,7 +426,7 @@ export class MiredComponent implements OnInit {
                             }else{
                               this.izquierda++;
                               for(var y=1;y<=3;y++){
-                                if(r[j]["p" + y ] && r[j]["estado"] == 1){
+                                if(r[j]["p" + y ] && r[j]["bloqueado"] == 0){
                                   // this.portafolioService.getPortafolio(r[j]["p" + y ]).subscribe(
                                   //   portafolio => {
                                   //     this.puntosIzquierda += Number(portafolio[0].puntos);
@@ -458,7 +458,7 @@ export class MiredComponent implements OnInit {
                                     // Seteo portafolios
                                     let width = 0;
                                     for(var y=1;y<=3;y++){
-                                      if(rs[k]["p" + y ] && rs[k]["estado"] == 1){
+                                      if(rs[k]["p" + y ] && rs[k]["bloqueado"] == 0){
                                         let cad = new Porta();
                                         cad.image = this.href + rs[k]["p" + y ] + '.png';
                                         cad.x = width;
@@ -474,7 +474,7 @@ export class MiredComponent implements OnInit {
                                     if(response[index].posicion == 'Derecha'){
                                       this.derecha++;
                                       for(var y=1;y<=3;y++){
-                                        if(rs[k]["p" + y ] && rs[k]["estado"] == 1){
+                                        if(rs[k]["p" + y ] && rs[k]["bloqueado"] == 0){
                                           // this.portafolioService.getPortafolio(rs[k]["p" + y ]).subscribe(
                                           //   portafolio => {
                                           //     this.puntosDerecha += Number(portafolio[0].puntos);
@@ -486,7 +486,7 @@ export class MiredComponent implements OnInit {
                                     }else{
                                       this.izquierda++;
                                       for(var y=1;y<=3;y++){
-                                        if(rs[k]["p" + y ] && rs[k]["estado"] == 1){
+                                        if(rs[k]["p" + y ] && rs[k]["bloqueado"] == 0){
                                           // this.portafolioService.getPortafolio(rs[k]["p" + y ]).subscribe(
                                           //   portafolio => {
                                           //     this.puntosIzquierda += Number(portafolio[0].puntos);
