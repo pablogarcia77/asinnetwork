@@ -1,4 +1,5 @@
 export class Usuario{
+
     id!: number;
     username!: string;
     password!: string;
@@ -21,4 +22,5 @@ export class Usuario{
     constructor(
         
     ){}
+
 }

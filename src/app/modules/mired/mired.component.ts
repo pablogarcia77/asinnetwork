@@ -281,7 +281,8 @@ export class MiredComponent implements OnInit {
             // Seteo Portafolios
             let width = 0;
             for(var y=1;y<=3;y++){
-              if(response[index]["p" + y ] && response[index]["bloqueado"] == 0){
+              // if(response[index]["p" + y ] && response[index]["bloqueado"] == 0){
+              if(response[index]["p" + y ]){
                 let cad = new Porta();
                 cad.image = this.href + response[index]["p" + y ] + '.png';
                 cad.x = width;
@@ -340,7 +341,8 @@ export class MiredComponent implements OnInit {
                     // Seteo portafolios
                     let width = 0;
                     for(var y=1;y<=3;y++){
-                      if(res[i]["p" + y ] && res[i]["bloqueado"] == 0){
+                      // if(res[i]["p" + y ] && res[i]["bloqueado"] == 0){
+                      if(res[i]["p" + y ]){
                         let cad = new Porta();
                         cad.image = this.href + res[i]["p" + y ] + '.png';
                         cad.x = width;
@@ -399,7 +401,8 @@ export class MiredComponent implements OnInit {
                             // Seteo Portafolios
                             let width = 0;
                             for(var y=1;y<=3;y++){
-                              if(r[j]["p" + y ] && r[j]["bloqueado"] == 0){
+                              // if(r[j]["p" + y ] && r[j]["bloqueado"] == 0){
+                              if(r[j]["p" + y ]){
                                 let cad = new Porta();
                                 cad.image = this.href + r[j]["p" + y ] + '.png';
                                 cad.x = width;
@@ -458,7 +461,8 @@ export class MiredComponent implements OnInit {
                                     // Seteo portafolios
                                     let width = 0;
                                     for(var y=1;y<=3;y++){
-                                      if(rs[k]["p" + y ] && rs[k]["bloqueado"] == 0){
+                                      // if(rs[k]["p" + y ] && rs[k]["bloqueado"] == 0){
+                                      if(rs[k]["p" + y ]){
                                         let cad = new Porta();
                                         cad.image = this.href + rs[k]["p" + y ] + '.png';
                                         cad.x = width;
