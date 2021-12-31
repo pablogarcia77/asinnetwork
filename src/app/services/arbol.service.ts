@@ -16,6 +16,8 @@ export class ArbolService {
     public http: HttpClient
   ) { }
 
+  
+
   getArbol(usuario: Usuario):Observable<any>{
     return this.http.get(this.urlBase + '?id=' + usuario.id);
   }
