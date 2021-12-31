@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { GestionPortafoliosComponent } from './admin/gestion-portafolios/gestion-portafolios.component';
 import { GestionRangosComponent } from './admin/gestion-rangos/gestion-rangos.component';
 import { ListaUsuariosComponent } from './admin/lista-usuarios/lista-usuarios.component';
+import { AsincashComponent } from './modules/asincash/asincash.component';
 import { AsociarComponent } from './modules/asociar/asociar.component';
 import { HerramientasComponent } from './modules/herramientas/herramientas.component';
 import { HomeComponent } from './modules/home/home.component';
@@ -25,7 +26,7 @@ const routes: Routes = [
       {path: 'rangos', component: GestionRangosComponent},
       {path: 'asociar', component: AsociarComponent},
       {path: 'ganancias', component: MisgananciasComponent},
-      {path: 'ganancias', component: MisgananciasComponent},
+      {path: 'asincash', component: AsincashComponent},
       {path: 'herramientas', component: HerramientasComponent},
       {path: 'lista-de-usuarios', component: ListaUsuariosComponent},
       {path: '**', component: NotfoundComponent},
@@ -35,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { anchorScrolling: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

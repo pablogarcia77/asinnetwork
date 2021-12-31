@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { faAddressBook, faBriefcase, faCoffee, faFileSignature, faIdCard, faKey, faMedal, faProjectDiagram, faSignOutAlt, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faAddressBook, faBriefcase, faCoffee, faFileSignature, faIdCard, faKey, faMedal, faMoneyBillWave, faProjectDiagram, faSignOutAlt, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { Usuario } from 'src/app/models/usuario';
 import { TosComponent } from '../tos/tos.component';
 
@@ -23,6 +23,7 @@ export class PanelComponent implements OnInit {
   faUsers = faUsers;
   faSigOut = faSignOutAlt;
   faMedal = faMedal;
+  faMoneyBillWave = faMoneyBillWave
 
  
   public usuario: Usuario;

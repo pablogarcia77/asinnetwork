@@ -1,0 +1,14 @@
+.mb-0{
+    margin-bottom: 0;
+}
+table {
+    width: 100%;
+    background-color: #242424;
+}
+.mat-cell, .mat-header-cell{
+    color: white;
+}
+.mat-paginator, .col{
+    background-color: #242424;
+    color: white;
+}

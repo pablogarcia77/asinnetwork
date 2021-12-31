@@ -24,6 +24,7 @@
             <li *ngIf="usuario.tipo != 'admin'"><a [routerLink]="['asociar']" class="blanco"><fa-icon [icon]="faBriefCase" size="1x" class="icono"></fa-icon>Asociar a mi red</a></li>
             <!-- <li *ngIf="usuario.tipo != 'admin'"><a [routerLink]="['ganancias']" class="blanco"><fa-icon [icon]="faCoffe" size="1x" class="icono"></fa-icon>Mis Ganancias</a></li> -->
             <li *ngIf="usuario.tipo != 'admin'"><a class="blanco cursor" (click)="openTOS()"><fa-icon [icon]="faFileSignature" size="1x" class="icono"></fa-icon>Acuerdo SIM</a></li>
+            <li *ngIf="usuario.tipo != 'admin'"><a [routerLink]="['asincash']" class="blanco cursor"><fa-icon [icon]="faMoneyBillWave" size="1x" class="icono"></fa-icon>Asincash</a></li>
             <li *ngIf="usuario.tipo != 'admin'"><a [routerLink]="['herramientas']" class="blanco"><fa-icon [icon]="faAddressBook" size="1x" class="icono"></fa-icon>Herramientas</a></li>
             <li><div class="divider grey darken-3"></div></li>
             <li><a href="#" class="blanco" (click)="logOut()"><fa-icon [icon]="faSigOut" size="1x" class="icono"></fa-icon>Salir</a></li>

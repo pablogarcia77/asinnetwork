@@ -58,6 +58,8 @@ import { TosComponent } from './modules/tos/tos.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { GestionRangosComponent } from './admin/gestion-rangos/gestion-rangos.component';
 import { GestionPuntosComponent } from './admin/gestion-puntos/gestion-puntos.component';
+import { AsincashComponent } from './modules/asincash/asincash.component';
+import { AsincoinComponent } from './admin/asincoin/asincoin.component';
 
 
 
@@ -96,6 +98,8 @@ import { GestionPuntosComponent } from './admin/gestion-puntos/gestion-puntos.co
     TosComponent,
     GestionRangosComponent,
     GestionPuntosComponent,
+    AsincashComponent,
+    AsincoinComponent,
   ],
   imports: [
     BrowserModule,

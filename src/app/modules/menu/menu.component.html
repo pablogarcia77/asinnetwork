@@ -8,14 +8,14 @@
             </div>
             <div class="col s10">
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#empresa">La Empresa</a></li>
-                    <li><a href="#asin">Asin Network</a></li>
+                    <li><a href="">Inicio</a></li>
+                    <li><a (click)="linkTo('empresa')">La Empresa</a></li>
+                    <li><a (click)="linkTo('asin')">Asin Network</a></li>
                     <li><a mat-button (click)="openSIM()">Acuerdo SIM</a></li>
                     <li><button class="waves-effect waves-light btn red darken-4" mat-button (click)="openLogin()">Ingreso</button></li>
                     <!-- <li><button mat-button (click)="openRegistro()" class="waves-effect waves-light btn red darken-4">Registro</button></li> -->
-                    <li><a href="#contacto">Contacto</a></li>
-                    <li><a href="#socialMedia">Redes</a></li>
+                    <li><a (click)="linkTo('contacto')">Contacto</a></li>
+                    <li><a (click)="linkTo('socialMedia')">Redes</a></li>
                 </ul>
             </div>
         </div>

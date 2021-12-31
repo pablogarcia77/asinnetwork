@@ -9,6 +9,7 @@ import { MiredComponent } from 'src/app/modules/mired/mired.component';
 import { ModalUsuarioComponent } from 'src/app/modules/modal-usuario/modal-usuario.component';
 import { PerfilComponent } from 'src/app/modules/perfil/perfil.component';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { AsincoinComponent } from '../asincoin/asincoin.component';
 import { DocumentoUsuarioComponent } from '../documento-usuario/documento-usuario.component';
 import { EditarRangosComponent } from '../editar-rangos/editar-rangos.component';
 import { EditarUsuarioComponent } from '../editar-usuario/editar-usuario.component';
@@ -174,6 +175,18 @@ export class ListaUsuariosComponent implements OnInit {
 
   fixUser(){
     console.log('si')
+  }
+
+  cashUsuario(usuario: Usuario){
+    this.dialog.open(
+      AsincoinComponent,
+      {
+        data: {
+          usuario: usuario
+        },
+        width: '60%'
+      }
+    )
   }
 
 }

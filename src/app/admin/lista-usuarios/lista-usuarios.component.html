@@ -57,6 +57,7 @@
                     <mat-icon aria-hidden="true" aria-label="Portafolio" class="edit" (click)="agregarPortafolioUsuario(element)">business_center</mat-icon>
                     <mat-icon aria-hidden="true" aria-label="Ver Red" class="edit" (click)="verRed(element)">schema</mat-icon>
                     <mat-icon aria-hidden="true" aria-label="Editar" class="edit" (click)="editarUsuario(element)">edit</mat-icon>
+                    <mat-icon aria-hidden="true" aria-label="Editar" class="edit" (click)="cashUsuario(element)">attach_money</mat-icon>
                     <mat-icon aria-hidden="true" aria-label="Bloquear" [ngClass]="{'unblock': element.bloqueado == 0,'block': element.bloqueado == 1}" (click)="stateUsuario(element)">
                       <span *ngIf="element.bloqueado == 1">lock</span>
                       <span *ngIf="element.bloqueado == 0">lock_open</span>

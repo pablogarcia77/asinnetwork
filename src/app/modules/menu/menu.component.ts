@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
@@ -12,7 +13,8 @@ import { TosComponent } from '../tos/tos.component';
 export class MenuComponent implements OnInit {
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private viewportScroller: ViewportScroller
   ) { }
 
   ngOnInit(): void {
@@ -52,4 +54,7 @@ export class MenuComponent implements OnInit {
     this.dialog.closeAll();
   }
   
+  linkTo(elementId: string){
+    this.viewportScroller.scrollToAnchor(elementId)
+  }
 }
