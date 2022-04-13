@@ -6,10 +6,9 @@ include "utils.php";
 $dbConn =  connect($db);
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
-header("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
-header("Access-Control-Expose-Headers: Content-Length, X-JSON");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Content-Type: application/json");
-header("Access-Control-Max-Age: 60");
+header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 /*
   listar todos los usuarios
  */
@@ -39,17 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   $content = file_get_contents("php://input");
 
     $array = json_decode($content, true);
-    $input = $_POST;
+    // $input = $_POST;
     $sql = $dbConn->prepare("SELECT * FROM usuario WHERE username=:username AND password=:password");
-    if($input['web'] == 'true'){
-      $sql->bindValue(':username', $input['username']);
-      $sql->bindValue(':password', $input['password']);
-    }else{
-      $sql->bindValue(':username', $array['username']);
-      $sql->bindValue(':password', $array['password']);
-    }
+    $sql->bindValue(':username', $array['username']);
+    $sql->bindValue(':password', $array['password']);
     $sql->execute();
-
+    
     $num = $sql->rowCount();
     if($num){
       $sql->setFetchMode(PDO::FETCH_ASSOC);

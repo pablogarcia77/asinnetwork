@@ -38,6 +38,7 @@ export class LoginService {
     const fd = new FormData();
     fd.append('username',usuario.username);
     fd.append('password',usuario.password);
+    fd.append('web','true');
     return this.http.post(this.urlBase,fd);
   }
 

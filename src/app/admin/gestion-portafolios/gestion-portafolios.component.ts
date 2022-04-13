@@ -61,8 +61,9 @@ export class GestionPortafoliosComponent implements OnInit {
   deletePortafolio(){
     this.portafolioService.deletePortafolio(this.selected).subscribe(
       response => {
-        console.log(response)
-        this.snackBar.open("Portafolio Eliminado Correctamente","Aceptar",{duration:1500})
+        if(response){
+          this.snackBar.open("Portafolio Eliminado Correctamente","Aceptar",{duration:1500})
+        }
       }
     )
     this.cargarPortafolios()
@@ -72,6 +73,8 @@ export class GestionPortafoliosComponent implements OnInit {
   nuevoPortafolio(){
     this.dialog.open(
       NuevoPortafolioComponent
+    ).afterClosed().subscribe(
+      () => this.cargarPortafolios()
     )
   }
 

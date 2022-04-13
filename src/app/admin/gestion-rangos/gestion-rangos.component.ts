@@ -62,7 +62,9 @@ export class GestionRangosComponent implements OnInit {
   nuevoRango(){
     this.rangosService.postRango(this.rango).subscribe(
       () => {
-        this.snackBar.open("Rango creado","Aceptar",{duration:1500})
+        this.snackBar.open("Rango creado","Aceptar",{duration:1500}).afterDismissed().subscribe(
+          () => this.cargarRangos()
+        )
       }
     )
   }

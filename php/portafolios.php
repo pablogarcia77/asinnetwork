@@ -65,7 +65,7 @@ $response['statusCode'] = $status;
 $response['statusMessage'] = $mensaje;
 $response['data'] = $data;
 
-echo json_encode($response, JSON_PRETTY_PRINT);
+//echo json_encode($response, JSON_PRETTY_PRINT);
 }
 
 
@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     
     $validar = validate($array['encodedImage']);
 
-    echo json_encode($validar);
+    //echo json_encode($validar);
     if($validar==1) {
       $imagen = save_base64_image($array['encodedImage'], "../assets/images/portafolios/" . $userId);
     
@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
       print_json(200, "Extension invalida", null);
     }
 
-    echo json_encode($array);
+    //echo json_encode($array);
 
     if($userId)
     {

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: 'https://asinnetwork.net/api/',
+  url: 'https://asinnetwork.net/api',
 };

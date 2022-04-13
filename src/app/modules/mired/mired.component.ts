@@ -149,7 +149,7 @@ export class MiredComponent implements OnInit {
       response => {
         // console.log(response)
         this.ganancias = response[0]
-        // console.log(this.ganancias)
+        console.log(this.ganancias)
       }
     )
 
